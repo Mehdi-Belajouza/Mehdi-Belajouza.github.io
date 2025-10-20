@@ -1030,3 +1030,256 @@ section {
     display: block;
     font-size: 0.8rem;
 }
+
+/* Tablet Breakpoint */
+@media (max-width: 1024px) {
+    .container {
+        width: 95%;
+        padding: 1.5rem 0;
+    }
+    
+    .skills-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .about-highlights {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .project-card,
+    .skill-card {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+/* Mobile Breakpoint */
+@media (max-width: 768px) {
+    /* Typography adjustments */
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    /* Navigation */
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    nav a {
+        margin-left: 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .nav-container {
+        padding: 1rem 3%;
+    }
+    
+    /* Hero section */
+    .hero {
+        padding: 5rem 1rem 2rem;
+        min-height: 90vh;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .cta-buttons a {
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* About section */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .about-highlights {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .about-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .highlight {
+        padding: 1.5rem;
+    }
+    
+    /* Skills section */
+    .skills-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .skill-card {
+        width: 100%;
+    }
+    
+    .skill-grid {
+        grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+        gap: 0.8rem;
+    }
+    
+    /* Projects section */
+    .projects {
+        gap: 1.5rem;
+    }
+    
+    .project-card {
+        width: 100%;
+    }
+    
+    .project-card img {
+        height: 200px;
+    }
+    
+    /* Certifications */
+    .certification-cards {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    /* Contact section */
+    .contact {
+        padding: 2rem 1rem;
+    }
+    
+    .contact-icons {
+        gap: 1.5rem;
+    }
+    
+    .contact-icons a {
+        font-size: 2rem;
+    }
+    
+    #contact-form {
+        padding: 1.5rem;
+    }
+    
+    /* Sections padding */
+    section {
+        padding: 60px 15px;
+        margin: 2rem 0;
+    }
+    
+    /* Bubble game */
+    #bubble-game {
+        height: 200px;
+    }
+}
+
+/* Small Mobile Breakpoint */
+@media (max-width: 480px) {
+    /* Further reduce typography */
+    .hero-content h1 {
+        font-size: 1.75rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.95rem;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    /* Navigation */
+    .logo {
+        font-size: 1.3rem;
+    }
+    
+    .side-nav {
+        width: 100%;
+        right: -100%;
+    }
+    
+    /* Hero section */
+    .hero {
+        padding: 4rem 0.5rem 1.5rem;
+    }
+    
+    .image {
+        height: 300px;
+        width: 225px;
+    }
+    
+    /* Buttons */
+    .cta-buttons a {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .btn {
+        padding: 8px 16px;
+        font-size: 1rem;
+    }
+    
+    /* Cards */
+    .skill-card,
+    .project-card {
+        padding: 1rem;
+    }
+    
+    .project-content {
+        padding: 1rem;
+    }
+    
+    .project-card img {
+        height: 180px;
+    }
+    
+    /* Contact */
+    .contact-icons a {
+        font-size: 1.8rem;
+    }
+    
+    /* Stats */
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .stat-item {
+        padding: 1rem;
+    }
+    
+    /* Highlights */
+    .highlight i {
+        font-size: 2rem;
+    }
+    
+    /* Icons */
+    .skill-card i {
+        font-size: 2.5rem;
+    }
+    
+    .certification-icon {
+        font-size: 2rem;
+    }
+    
+    /* Sections */
+    section {
+        padding: 40px 10px;
+        margin: 1.5rem 0;
+    }
+    
+    /* QR Code */
+    .qr-code {
+        width: 80px;
+        height: 80px;
+    }
+}
