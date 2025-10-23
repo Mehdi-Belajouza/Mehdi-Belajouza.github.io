@@ -1,342 +1,510 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mehdi Belajouza - Full Stack Software Developer</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <!-- Add fallback fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>Mehdi Belajouza - Full Stack Developer</title>
+    <meta name="description" content="Full Stack Developer specializing in modern web technologies">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out',
+                        'slide-in-right': 'slideInRight 0.8s ease-out',
+                        'float': 'float 3s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(50px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        slideInLeft: {
+                            '0%': { transform: 'translateX(-50px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        slideInRight: {
+                            '0%': { transform: 'translateX(50px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.5)' },
+                            '100%': { boxShadow: '0 0 40px rgba(59, 130, 246, 0.8)' }
+                        }
+                    },
+                    backdropBlur: {
+                        xs: '2px',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-    <div class="custom-cursor"></div>
-    <header>
-        <div class="nav-container">
-            <div class="site-logo">Mehdi Belajouza</div>
-            <button id="nav-toggle" class="nav-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
+<body class="font-inter bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden">
+    
+    <!-- Loading Screen -->
+    <div id="loading" class="fixed inset-0 bg-gradient-to-br from-slate-900 to-purple-900 z-50 flex items-center justify-center transition-opacity duration-1000">
+        <div class="text-center">
+            <div class="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+            <p class="text-xl font-light">Loading Experience...</p>
         </div>
-    </header>
+    </div>
 
-    <nav class="side-nav">
-        <div class="nav-header">
-            <button id="theme-toggle" class="theme-toggle">
-                <i class="fas fa-sun"></i>
-            </button>
-            <button id="nav-close" class="nav-close">
-                <i class="fas fa-times"></i>
-            </button>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-40 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                    Mehdi Belajouza
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-300 hover:text-white transition-colors duration-300 relative">Home</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-white transition-colors duration-300 relative">About</a>
+                    <a href="#skills" class="nav-link text-gray-300 hover:text-white transition-colors duration-300 relative">Skills</a>
+                    <a href="#projects" class="nav-link text-gray-300 hover:text-white transition-colors duration-300 relative">Projects</a>
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-white transition-colors duration-300 relative">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
         </div>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-black/90 backdrop-blur-md transform -translate-y-full transition-transform duration-300">
+            <div class="px-4 py-6 space-y-4">
+                <a href="#home" class="block text-gray-300 hover:text-white transition-colors duration-300">Home</a>
+                <a href="#about" class="block text-gray-300 hover:text-white transition-colors duration-300">About</a>
+                <a href="#skills" class="block text-gray-300 hover:text-white transition-colors duration-300">Skills</a>
+                <a href="#projects" class="block text-gray-300 hover:text-white transition-colors duration-300">Projects</a>
+                <a href="#contact" class="block text-gray-300 hover:text-white transition-colors duration-300">Contact</a>
+            </div>
         </div>
     </nav>
 
-    <div id="loading">
-        <div class="loader"></div>
-        <p class="loading-text">Loading... Please wait</p>
-    </div>
-    <div class="container">
-
-
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <img class="image" src="profile.png" alt="Avatar"> 
-                <h1 id="typewriter"></h1>
-                <p>Transforming complex problems into elegant, scalable solutions.</p>
-                <div class="cta-buttons">
-                    <a href="#projects" class="btn btn-primary">View Projects</a>
-                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-container">
-                <div class="skill-category fade-in">
-                    <h3>Frontend</h3>
-                    <div class="skill-grid">
-                        <div class="skill-item">
-                            <i class="fab fa-react"></i>
-                            <span>React</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-js"></i>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-html5"></i>
-                            <span>HTML5</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-css3-alt"></i>
-                            <span>CSS3</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category fade-in">
-                    <h3>Backend</h3>
-                    <div class="skill-grid">
-                        <div class="skill-item">
-                            <i class="fab fa-node-js"></i>
-                            <span>Node.js</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-python"></i>
-                            <span>Python</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-database"></i>
-                            <span>SQL</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-php"></i>
-                            <span>PHP</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category fade-in">
-                    <h3>Tools & Deployment</h3>
-                    <div class="skill-grid">
-                        <div class="skill-item">
-                            <i class="fab fa-git-alt"></i>
-                            <span>Git</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-docker"></i>
-                            <span>Docker</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-aws"></i>
-                            <span>AWS</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-linux"></i>
-                            <span>Linux</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects">
-                <div class="project-card">
-                    <img  src="checkmyhttps.png" alt="Project 1">
-                    <div class="project-content">
-                        <h3>Extension</h3>
-                        <p>CheckMyHttps</p>
-                        <div class="project-icons">
-                            <a href="https://github.com/checkmyhttps/checkmyhttps" target="_blank" title="GitHub Repo">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://checkmyhttps.net/" target="_blank" title="Live Preview">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <video width="390" height="240" controls>
-                        <source src="Demo.webm" type="video/mp4">
-                      Your browser does not support the video tag.
-                      </video> 
-                    <div class="project-content">
-                        <h3>Citytripmapper Tourist Guide Platform</h3>
-                        <p>Full-stack web application with microservices architecture.</p>
-                        <div class="project-icons">
-                            <a href="https://github.com/CityTripMapper/CityTripMapper" target="_blank" title="GitHub Repo">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="Doctolib.png"  alt="Project 2">
-                    <div class="project-content">
-                        <h3>Doctolib</h3>
-                        <p>UI/UX design Project.</p>
-                        <div class="project-icons">
-                            <a href="#" target="_blank" title="GitHub Repo">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#" target="_blank" title="Live Preview">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="placeholder-image.png" alt="Project 3">
-                    <div class="project-content">
-                        <h3>Real-Time Chat Application</h3>
-                        <p>WebSocket-based communication platform.</p>
-                        <div class="project-icons">
-                            <a href="#" target="_blank" title="GitHub Repo">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://project3-preview.com" target="_blank" title="Live Preview">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="placeholder-image.png" alt="Project 2">
-                    <div class="project-content">
-                        <h3>Machine Learning Predictor</h3>
-                        <p>AI-powered predictive analytics solution.</p>
-                        <div class="project-icons">
-                            <a href="#" target="_blank" title="GitHub Repo">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#" target="_blank" title="Live Preview">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="placeholder-image.png" alt="Project 3">
-                    <div class="project-content">
-                        <h3>Real-Time Chat Application</h3>
-                        <p>WebSocket-based communication platform.</p>
-                        <div class="project-icons">
-                            <a href="#" target="_blank" title="GitHub Repo">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://project3-preview.com" target="_blank" title="Live Preview">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="see-more">
-                <a href="#all-projects" class="btn btn-primary">See More Projects</a>
-            </div>
-        </section>
-        
-        <section id="about">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Who I Am</h3>
-                    <p>Hi there! I'm a passionate Full Stack Developer with a keen interest in building scalable web applications. With experience in both front-end and back-end technologies, I love turning complex problems into simple, beautiful solutions.</p>
-                    <div class="about-highlights">
-                        <div class="highlight">
-                            <i class="fas fa-code"></i>
-                            <h3>Clean Code</h3>
-                            <p>Writing maintainable, efficient code that scales</p>
-                        </div>
-                        <div class="highlight">
-                            <i class="fas fa-rocket"></i>
-                            <h3>Innovation</h3>
-                            <p>Always learning and implementing new technologies</p>
-                        </div>
-                        <div class="highlight">
-                            <i class="fas fa-layer-group"></i>
-                            <h3>Full Stack</h3>
-                            <p>End-to-end development expertise</p>
-                        </div>
-                        <div class="highlight">
-                            <i class="fas fa-users"></i>
-                            <h3>Collaboration</h3>
-                            <p>Strong team player and communicator</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">1+</span>
-                        <span class="stat-label">Years Experience</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">8+</span>
-                        <span class="stat-label">Projects Completed</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div id="bubble-game">
-            <canvas id="bubble-canvas"></canvas>
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0">
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full animate-float"></div>
+            <div class="absolute top-3/4 right-1/4 w-48 h-48 bg-purple-500/10 rounded-full animate-float" style="animation-delay: 1s;"></div>
+            <div class="absolute top-1/2 left-1/2 w-32 h-32 bg-pink-500/10 rounded-full animate-float" style="animation-delay: 2s;"></div>
         </div>
 
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center">
+                <!-- Profile Image -->
+                <div class="mb-8 animate-fade-in">
+                    <div class="relative w-48 h-48 mx-auto">
+                        <img src="profile.webp" alt="Mehdi Belajouza" 
+                             class="w-full h-full rounded-full object-cover border-4 border-white/20 shadow-2xl animate-glow">
+                        <div class="absolute inset-0 bg-gradient-to-t from-blue-500/20 to-transparent rounded-full"></div>
+                    </div>
+                </div>
 
-        <section class="certifications">
-            <h2 class="section-title">Certifications</h2>
-            <div class="certification-cards">
-                <div class="certification-card">
-                    <div class="certification-content">
-                        <i class="fas fa-award certification-icon"></i>
-                        <h3>AWS Cloud Practitioner</h3>
-                        <p>Amazon Web Services</p>
-                        <div class="qr-code">
-                            <img src="qr-placeholder.png" alt="QR Code" class="qr-image">
-                            <span class="qr-hover-text">Scan to verify</span>
+                <!-- Text Content -->
+                <div class="space-y-6">
+                    <h1 class="text-5xl md:text-7xl font-bold animate-slide-up">
+                        <span class="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                            Full Stack
+                        </span>
+                        <br>
+                        <span class="text-white">Developer</span>
+                    </h1>
+                    
+                    <p class="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto animate-slide-up" style="animation-delay: 0.2s;">
+                        Crafting digital experiences with modern technologies and creative solutions
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up" style="animation-delay: 0.4s;">
+                        <a href="#projects" 
+                           class="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                            View My Work
+                        </a>
+                        <a href="#contact" 
+                           class="px-8 py-4 border-2 border-white/30 rounded-full text-white font-semibold hover:bg-white/10 transition-all duration-300 transform hover:scale-105 backdrop-blur-sm">
+                            Get In Touch
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Scroll Indicator -->
+                <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                    <i class="fas fa-chevron-down text-2xl text-white/60"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                    About Me
+                </h2>
+                <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+                    Passionate about creating exceptional digital experiences through code
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <h3 class="text-3xl font-bold text-white mb-6">Who I Am</h3>
+                    <p class="text-gray-300 leading-relaxed text-lg">
+                        I'm a passionate Full Stack Developer with expertise in modern web technologies. 
+                        I love turning complex problems into simple, beautiful, and intuitive solutions.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed text-lg">
+                        With experience in both frontend and backend development, I create comprehensive 
+                        solutions that deliver exceptional user experiences and robust functionality.
+                    </p>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-6 mt-8">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-400">2+</div>
+                            <div class="text-gray-400">Years Experience</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-purple-400">15+</div>
+                            <div class="text-gray-400">Projects</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-pink-400">10+</div>
+                            <div class="text-gray-400">Technologies</div>
                         </div>
                     </div>
                 </div>
-                <div class="certification-card">
-                    <div class="certification-content">
-                        <i class="fas fa-shield-alt certification-icon"></i>
-                        <h3>Security+</h3>
-                        <p>CompTIA</p>
-                        <div class="qr-code">
-                            <img src="qr-placeholder.png" alt="QR Code" class="qr-image">
-                            <span class="qr-hover-text">Scan to verify</span>
+
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                        <i class="fas fa-code text-3xl text-blue-400 mb-4"></i>
+                        <h4 class="text-xl font-semibold mb-2">Clean Code</h4>
+                        <p class="text-gray-300 text-sm">Writing maintainable and scalable code</p>
+                    </div>
+                    <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                        <i class="fas fa-rocket text-3xl text-purple-400 mb-4"></i>
+                        <h4 class="text-xl font-semibold mb-2">Innovation</h4>
+                        <p class="text-gray-300 text-sm">Always learning new technologies</p>
+                    </div>
+                    <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                        <i class="fas fa-users text-3xl text-pink-400 mb-4"></i>
+                        <h4 class="text-xl font-semibold mb-2">Collaboration</h4>
+                        <p class="text-gray-300 text-sm">Strong team player and communicator</p>
+                    </div>
+                    <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                        <i class="fas fa-layer-group text-3xl text-green-400 mb-4"></i>
+                        <h4 class="text-xl font-semibold mb-2">Full Stack</h4>
+                        <p class="text-gray-300 text-sm">End-to-end development expertise</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                    Technical Skills
+                </h2>
+                <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+                    Technologies and tools I use to bring ideas to life
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Frontend -->
+                <div class="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                    <h3 class="text-2xl font-bold mb-6 text-blue-400">Frontend</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <i class="fab fa-react text-2xl text-blue-400"></i>
+                            <span class="text-lg">React</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i class="fab fa-js text-2xl text-yellow-400"></i>
+                            <span class="text-lg">JavaScript</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i class="fab fa-html5 text-2xl text-orange-400"></i>
+                            <span class="text-lg">HTML5</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i class="fab fa-css3-alt text-2xl text-blue-400"></i>
+                            <span class="text-lg">CSS3</span>
                         </div>
                     </div>
                 </div>
-                <div class="certification-card">
-                    <div class="certification-content">
-                        <i class="fas fa-code certification-icon"></i>
-                        <h3>Full Stack Developer</h3>
-                        <p>FreeCodeCamp</p>
-                        <div class="qr-code">
-                            <img src="qr-placeholder.png" alt="QR Code" class="qr-image">
-                            <span class="qr-hover-text">Scan to verify</span>
+
+                <!-- Backend -->
+                <div class="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                    <h3 class="text-2xl font-bold mb-6 text-purple-400">Backend</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <i class="fab fa-node-js text-2xl text-green-400"></i>
+                            <span class="text-lg">Node.js</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i class="fab fa-python text-2xl text-blue-400"></i>
+                            <span class="text-lg">Python</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i class="fas fa-database text-2xl text-gray-400"></i>
+                            <span class="text-lg">SQL</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i class="fab fa-php text-2xl text-purple-400"></i>
+                            <span class="text-lg">PHP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools -->
+                <div class="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                    <h3 class="text-2xl font-bold mb-6 text-pink-400">Tools & Cloud</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <i class="fab fa-git-alt text-2xl text-red-400"></i>
+                            <span class="text-lg">Git</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i class="fab fa-docker text-2xl text-blue-400"></i>
+                            <span class="text-lg">Docker</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i class="fab fa-aws text-2xl text-orange-400"></i>
+                            <span class="text-lg">AWS</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i class="fab fa-linux text-2xl text-yellow-400"></i>
+                            <span class="text-lg">Linux</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="contact" class="contact">
-            <h2 class="section-title">Let's Connect</h2>
-            <p>Open to exciting opportunities and collaboration. Feel free to reach out!</p>
-            <div class="contact-icons">
-                <a href="https://github.com/Mehdi-Belajouza" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/mehdi-belajouza/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:belajouza@et.esiea.fr"><i class="far fa-envelope"></i></a>
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                    Featured Projects
+                </h2>
+                <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+                    Some of my recent work that showcases my skills and creativity
+                </p>
             </div>
-        </section>
 
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="group bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105">
+                    <div class="aspect-video bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden">
+                        <img src="checkmyhttps.png" alt="CheckMyHttps" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <div class="flex gap-4">
+                                <a href="https://github.com/checkmyhttps/checkmyhttps" target="_blank" 
+                                   class="p-3 bg-white/20 rounded-full hover:bg-white/30 transition-colors">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
+                                <a href="https://checkmyhttps.net/" target="_blank" 
+                                   class="p-3 bg-white/20 rounded-full hover:bg-white/30 transition-colors">
+                                    <i class="fas fa-external-link-alt text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">CheckMyHttps Extension</h3>
+                        <p class="text-gray-300 mb-4">Browser extension for HTTPS security verification</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">JavaScript</span>
+                            <span class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">WebExtensions</span>
+                        </div>
+                    </div>
+                </div>
 
-        <div id="particles-js"></div>
-    </div>
+                <!-- Project 2 -->
+                <div class="group bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105">
+                    <div class="aspect-video bg-gradient-to-br from-green-500 to-blue-600 relative overflow-hidden">
+                        <video class="w-full h-full object-cover" muted>
+                            <source src="Demo.webm" type="video/webm">
+                        </video>
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <div class="flex gap-4">
+                                <a href="https://github.com/CityTripMapper/CityTripMapper" target="_blank" 
+                                   class="p-3 bg-white/20 rounded-full hover:bg-white/30 transition-colors">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">CityTripMapper</h3>
+                        <p class="text-gray-300 mb-4">Tourist guide platform with microservices architecture</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">React</span>
+                            <span class="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm">Node.js</span>
+                            <span class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
 
-    <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            if (typeof particlesJS !== 'undefined') {
-                particlesJS.load('particles-js', './particles.json', function() {
-                    console.log('Particles.js loaded!');
-                });
-            }
-        });
-    </script>
+                <!-- Project 3 -->
+                <div class="group bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105">
+                    <div class="aspect-video bg-gradient-to-br from-pink-500 to-red-600 relative overflow-hidden">
+                        <img src="Doctolib.png" alt="Doctolib Redesign" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <div class="flex gap-4">
+                                <a href="https://github.com/Mehdi-Belajouza" target="_blank" 
+                                   class="p-3 bg-white/20 rounded-full hover:bg-white/30 transition-colors">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Doctolib Redesign</h3>
+                        <p class="text-gray-300 mb-4">Modern UI/UX redesign focusing on user experience</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-pink-500/20 text-pink-300 rounded-full text-sm">Figma</span>
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">UI/UX</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="https://github.com/Mehdi-Belajouza" target="_blank"
+                   class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
+                    <i class="fab fa-github"></i>
+                    View All Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                    Let's Work Together
+                </h2>
+                <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+                    Ready to bring your next project to life? Let's connect and create something amazing together.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <div class="flex items-center gap-4 p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10">
+                        <div class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-envelope text-blue-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">Email</h3>
+                            <p class="text-gray-300">belajouza@et.esiea.fr</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10">
+                        <div class="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-map-marker-alt text-purple-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">Location</h3>
+                            <p class="text-gray-300">Paris, France</p>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="flex gap-4">
+                        <a href="https://github.com/Mehdi-Belajouza" target="_blank" 
+                           class="p-4 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-110">
+                            <i class="fab fa-github text-2xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/mehdi-belajouza/" target="_blank" 
+                           class="p-4 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-110">
+                            <i class="fab fa-linkedin text-2xl"></i>
+                        </a>
+                        <a href="mailto:belajouza@et.esiea.fr" 
+                           class="p-4 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-110">
+                            <i class="fas fa-envelope text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <form class="space-y-6 bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Name</label>
+                        <input type="text" required 
+                               class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:border-blue-400 focus:outline-none transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Email</label>
+                        <input type="email" required 
+                               class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:border-blue-400 focus:outline-none transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Message</label>
+                        <textarea rows="4" required 
+                                  class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:border-blue-400 focus:outline-none transition-colors resize-none"></textarea>
+                    </div>
+                    <button type="submit" 
+                            class="w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg text-white font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400">© 2024 Mehdi Belajouza. Built with ❤️ and modern web technologies.</p>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="script-v2.js"></script>
 </body>
 </html>
