@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mehdi Belajouza - Full Stack Developer</title>
-    <meta name="description" content="Full Stack Developer specializing in modern web technologies">
+    <title>Mehdi Belajouza - Full Stack Engineer</title>
+    <meta name="description" content="Full Stack Engineer specializing in modern web technologies">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -101,19 +101,89 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden bg-black/90 backdrop-blur-md transform -translate-y-full transition-transform duration-300">
-            <div class="px-4 py-6 space-y-4">
-                <a href="#home" class="block text-gray-300 hover:text-white transition-colors duration-300">Home</a>
-                <a href="#about" class="block text-gray-300 hover:text-white transition-colors duration-300">About</a>
-                <a href="#skills" class="block text-gray-300 hover:text-white transition-colors duration-300">Skills</a>
-                <a href="#projects" class="block text-gray-300 hover:text-white transition-colors duration-300">Projects</a>
-                <a href="#contact" class="block text-gray-300 hover:text-white transition-colors duration-300">Contact</a>
+        <div id="mobile-menu" class="md:hidden fixed inset-0 z-50 transform translate-x-full transition-all duration-500 ease-out">
+            <!-- Background Overlay -->
+            <div class="absolute inset-0 bg-black/80 backdrop-blur-md"></div>
+            
+            <!-- Menu Content -->
+            <div class="relative bg-gradient-to-br from-slate-900/95 via-purple-900/95 to-indigo-900/95 backdrop-blur-lg h-full w-full flex flex-col">
+                <!-- Header -->
+                <div class="flex justify-between items-center p-6 border-b border-white/20">
+                    <div class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                        Navigation
+                    </div>
+                    <button id="mobile-menu-close" class="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 hover:rotate-90">
+                        <i class="fas fa-times text-xl text-white"></i>
+                    </button>
+                </div>
+                
+                <!-- Navigation Links -->
+                <div class="flex-1 flex flex-col justify-center px-8 py-12 space-y-6">
+                    <a href="#home" class="mobile-nav-link group flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-400/50 transition-all duration-300">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-home text-lg"></i>
+                        </div>
+                        <span class="text-xl font-medium text-white group-hover:text-blue-400 transition-colors duration-300">Home</span>
+                    </a>
+                    
+                    <a href="#about" class="mobile-nav-link group flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-purple-400/50 transition-all duration-300">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-user text-lg"></i>
+                        </div>
+                        <span class="text-xl font-medium text-white group-hover:text-purple-400 transition-colors duration-300">About</span>
+                    </a>
+                    
+                    <a href="#skills" class="mobile-nav-link group flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-pink-400/50 transition-all duration-300">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-pink-600 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-code text-lg"></i>
+                        </div>
+                        <span class="text-xl font-medium text-white group-hover:text-pink-400 transition-colors duration-300">Skills</span>
+                    </a>
+                    
+                    <a href="#projects" class="mobile-nav-link group flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-green-400/50 transition-all duration-300">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-rocket text-lg"></i>
+                        </div>
+                        <span class="text-xl font-medium text-white group-hover:text-green-400 transition-colors duration-300">Projects</span>
+                    </a>
+                    
+                    <a href="#contact" class="mobile-nav-link group flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-yellow-400/50 transition-all duration-300">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-500 to-yellow-600 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-envelope text-lg"></i>
+                        </div>
+                        <span class="text-xl font-medium text-white group-hover:text-yellow-400 transition-colors duration-300">Contact</span>
+                    </a>
+                </div>
+                
+                <!-- Footer with Social Links -->
+                <div class="p-6 border-t border-white/20">
+                    <div class="text-center mb-4">
+                        <p class="text-gray-400 text-sm">Connect with me</p>
+                    </div>
+                    <div class="flex justify-center space-x-4">
+                        <a href="https://github.com/Mehdi-Belajouza" target="_blank" 
+                           class="p-3 rounded-full bg-white/10 hover:bg-blue-500/20 border border-white/20 hover:border-blue-400/50 transition-all duration-300 hover:scale-110">
+                            <i class="fab fa-github text-xl text-white"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/mehdi-belajouza/" target="_blank" 
+                           class="p-3 rounded-full bg-white/10 hover:bg-blue-500/20 border border-white/20 hover:border-blue-400/50 transition-all duration-300 hover:scale-110">
+                            <i class="fab fa-linkedin text-xl text-white"></i>
+                        </a>
+                        <a href="mailto:belajouza@et.esiea.fr" 
+                           class="p-3 rounded-full bg-white/10 hover:bg-red-500/20 border border-white/20 hover:border-red-400/50 transition-all duration-300 hover:scale-110">
+                            <i class="fas fa-envelope text-xl text-white"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
+    <!-- Smooth Gradient Overlay for Section Transitions -->
+    <div id="gradient-overlay" class="fixed inset-0 pointer-events-none z-0 opacity-0 transition-all duration-1000 ease-in-out"></div>
+
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden section-gradient" data-gradient="slate-purple">
         <!-- Animated Background Elements -->
         <div class="absolute inset-0">
             <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full animate-float"></div>
@@ -168,8 +238,8 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" class="py-20 relative section-gradient transition-all duration-1000" data-gradient="purple-blue">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 opacity-0 transform translate-y-10 section-content">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
                     About Me
@@ -235,8 +305,8 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-20 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" class="py-20 relative section-gradient transition-all duration-1000" data-gradient="blue-cyan">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 opacity-0 transform translate-y-10 section-content">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
                     Technical Skills
@@ -320,8 +390,8 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" class="py-20 relative section-gradient transition-all duration-1000" data-gradient="indigo-pink">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 opacity-0 transform translate-y-10 section-content">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
                     Featured Projects
@@ -332,96 +402,130 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="group bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105">
-                    <div class="aspect-video bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden">
-                        <img src="checkmyhttps.png" alt="CheckMyHttps" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
-                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <div class="flex gap-4">
-                                <a href="https://github.com/checkmyhttps/checkmyhttps" target="_blank" 
-                                   class="p-3 bg-white/20 rounded-full hover:bg-white/30 transition-colors">
-                                    <i class="fab fa-github text-xl"></i>
-                                </a>
-                                <a href="https://checkmyhttps.net/" target="_blank" 
-                                   class="p-3 bg-white/20 rounded-full hover:bg-white/30 transition-colors">
-                                    <i class="fas fa-external-link-alt text-xl"></i>
-                                </a>
-                            </div>
+                <!-- JBL Tunisia Project -->
+                <div class="project-card group bg-gradient-to-br from-orange-500 to-red-500 rounded-3xl overflow-hidden hover-float transition-all duration-500">
+                    <div class="p-8 h-full flex flex-col">
+                        <div class="mb-4">
+                            <span class="text-white/80 text-sm font-medium">Internship Website</span>
+                            <h3 class="text-3xl font-bold text-white mt-2 mb-4">IVB</h3>
+                            <p class="text-white/90 leading-relaxed">
+                                A comprehensive Web application handles multiple users and holds a voice assistant management system built on Laravel. 
+                                The platform provides a complete solution for managing voice interactions, call handling, and AI-powered conversations with advanced analytics and monitoring capabilities.
+                            </p>
                         </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">CheckMyHttps Extension</h3>
-                        <p class="text-gray-300 mb-4">Browser extension for HTTPS security verification</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">JavaScript</span>
-                            <span class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">WebExtensions</span>
+                        <div class="mt-auto flex gap-3">
+                            <a href="https://ionos.ivb.itfuture.net/" target="_blank" 
+                               class="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110">
+                                <i class="fab fa-github text-lg"></i>
+                            </a>
+                            <a href="#" target="_blank" 
+                               class="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110">
+                                <i class="fas fa-external-link-alt text-lg"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
-                <div class="group bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105">
-                    <div class="aspect-video bg-gradient-to-br from-green-500 to-blue-600 relative overflow-hidden">
-                        <video class="w-full h-full object-cover" muted>
-                            <source src="Demo.webm" type="video/webm">
-                        </video>
-                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <div class="flex gap-4">
-                                <a href="https://github.com/CityTripMapper/CityTripMapper" target="_blank" 
-                                   class="p-3 bg-white/20 rounded-full hover:bg-white/30 transition-colors">
-                                    <i class="fab fa-github text-xl"></i>
-                                </a>
-                            </div>
+                <!-- CheckMyHttps Project -->
+                <div class="project-card group bg-gradient-to-br from-teal-400 to-green-500 rounded-3xl overflow-hidden hover-float transition-all duration-500">
+                    <div class="p-8 h-full flex flex-col">
+                        <div class="mb-4">
+                            <span class="text-white/80 text-sm font-medium">Open Source</span>
+                            <h3 class="text-3xl font-bold text-white mt-2 mb-4">CheckMyHttps</h3>
+                            <p class="text-white/90 leading-relaxed">
+                                Browser extension for HTTPS security verification that helps users detect potential 
+                                man-in-the-middle attacks and ensures secure connections.
+                            </p>
                         </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">CityTripMapper</h3>
-                        <p class="text-gray-300 mb-4">Tourist guide platform with microservices architecture</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">React</span>
-                            <span class="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm">Node.js</span>
-                            <span class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">MongoDB</span>
+                        <div class="mt-auto flex gap-3">
+                            <a href="https://github.com/checkmyhttps/checkmyhttps" target="_blank" 
+                               class="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110">
+                                <i class="fab fa-github text-lg"></i>
+                            </a>
+                            <a href="https://checkmyhttps.net/" target="_blank" 
+                               class="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110">
+                                <i class="fas fa-external-link-alt text-lg"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 3 -->
-                <div class="group bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105">
-                    <div class="aspect-video bg-gradient-to-br from-pink-500 to-red-600 relative overflow-hidden">
-                        <img src="Doctolib.png" alt="Doctolib Redesign" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
-                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <div class="flex gap-4">
-                                <a href="https://github.com/Mehdi-Belajouza" target="_blank" 
-                                   class="p-3 bg-white/20 rounded-full hover:bg-white/30 transition-colors">
-                                    <i class="fab fa-github text-xl"></i>
-                                </a>
-                            </div>
+                <!-- Esports Project -->
+                <div class="project-card group bg-gradient-to-br from-purple-600 to-indigo-600 rounded-3xl overflow-hidden hover-float transition-all duration-500">
+                    <div class="p-8 h-full flex flex-col">
+                        <div class="mb-4">
+                            <span class="text-white/80 text-sm font-medium">Personal Project</span>
+                            <h3 class="text-3xl font-bold text-white mt-2 mb-4">Esports Hub</h3>
+                            <p class="text-white/90 leading-relaxed">
+                            Esports Hub is a modern, responsive web platform designed for the Tunisian Esports and broader MENA community.
+                            It serves as a centralized, fast, and lightweight hub providing comprehensive coverage of professional gaming teams, tournaments, players, and news.
+                            It is still under development.
+                            </p>
                         </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Doctolib Redesign</h3>
-                        <p class="text-gray-300 mb-4">Modern UI/UX redesign focusing on user experience</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-pink-500/20 text-pink-300 rounded-full text-sm">Figma</span>
-                            <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">UI/UX</span>
+                        <div class="mt-auto flex gap-3">
+                            <a href="https://github.com/Mehdi-Belajouza/lol-esports-hub" target="_blank" 
+                               class="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110">
+                                <i class="fab fa-github text-lg"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="text-center mt-12">
-                <a href="https://github.com/Mehdi-Belajouza" target="_blank"
-                   class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
-                    <i class="fab fa-github"></i>
-                    View All Projects
-                </a>
+                <!-- CityTripMapper Project -->
+                <div class="project-card group bg-gradient-to-br from-indigo-600 to-purple-600 rounded-3xl overflow-hidden hover-float transition-all duration-500">
+                    <div class="p-8 h-full flex flex-col">
+                        <div class="mb-4">
+                            <span class="text-white/80 text-sm font-medium">University Project</span>
+                            <h3 class="text-3xl font-bold text-white mt-2 mb-4">CityTripMapper</h3>
+                            <p class="text-white/90 leading-relaxed">
+                                Tourist guide platform with microservices architecture for planning and 
+                                discovering destinations. Built with React, Node.js, and MongoDB.
+                            </p>
+                        </div>
+                        <div class="mt-auto flex gap-3">
+                            <a href="https://github.com/CityTripMapper/CityTripMapper" target="_blank" 
+                               class="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110">
+                                <i class="fab fa-github text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Designer Project -->
+                <div class="project-card group bg-gradient-to-br from-pink-500 to-rose-500 rounded-3xl overflow-hidden hover-float transition-all duration-500">
+                    <div class="p-8 h-full flex flex-col">
+                        <div class="mb-4">
+                            <span class="text-white/80 text-sm font-medium">University Project</span>
+                            <h3 class="text-3xl font-bold text-white mt-2 mb-4">Doctolib Application UI/UX</h3>
+                            <p class="text-white/90 leading-relaxed">
+                                Concept of improving the doctolib application interface . And optimize it for the users on mobile devices.
+                            </p>
+                        </div>
+                        <a href="https://www.figma.com/" target="_blank" 
+                            class="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110">
+                            <i class="fas fa-external-link-alt text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- See More Card -->
+                <div class="project-card group bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl overflow-hidden hover-float transition-all duration-500 flex items-center justify-center">
+                    <a href="https://github.com/Mehdi-Belajouza" target="_blank" class="text-center p-8">
+                        <div class="text-5xl font-bold text-white mb-2">13+</div>
+                        <div class="text-white/80 text-lg">More Projects Soon</div>
+                        <div class="text-white/60 text-sm mt-2">See them all on GitHub</div>
+                        <div class="mt-4">
+                            <i class="fas fa-arrow-right text-white text-xl"></i>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 relative">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" class="py-20 relative section-gradient transition-all duration-1000" data-gradient="purple-rose">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 opacity-0 transform translate-y-10 section-content">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
                     Let's Work Together
@@ -498,7 +602,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-8 border-t border-white/10">
+    <footer class="py-8 border-t border-white/10 section-gradient" data-gradient="slate-black">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p class="text-gray-400">© 2024 Mehdi Belajouza. Built with ❤️ and modern web technologies.</p>
         </div>

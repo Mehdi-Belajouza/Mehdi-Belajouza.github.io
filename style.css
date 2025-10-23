@@ -1284,7 +1284,72 @@ section {
     }
 }
 
-/* Essential custom styles only - let Tailwind handle the rest */
+/* Enhanced Section Animations */
+.section-content {
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Ensure proper visibility for animated elements */
+.bg-white\/5,
+.bg-white\/10,
+.project-card,
+.group {
+    transform-origin: center;
+    will-change: transform, opacity;
+}
+
+/* Fix for project cards initial state */
+.project-card {
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-float:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* Smooth body background transitions */
+body {
+    transition: background 1.5s ease-in-out;
+}
+
+/* Enhanced mobile menu */
+#mobile-menu {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+/* Better scroll performance */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Ensure sections don't interfere with each other */
+section {
+    position: relative;
+    z-index: 1;
+}
+
+/* Fix mobile navigation animation */
+#mobile-menu.translate-x-full {
+    transform: translateX(100%);
+}
+
+#mobile-menu:not(.translate-x-full) {
+    transform: translateX(0);
+}
+
+/* Better animation delays for staggered effects */
+.bg-white\/5:nth-child(1) { transition-delay: 0.1s; }
+.bg-white\/5:nth-child(2) { transition-delay: 0.2s; }
+.bg-white\/5:nth-child(3) { transition-delay: 0.3s; }
+.bg-white\/5:nth-child(4) { transition-delay: 0.4s; }
+
+/* Ensure proper spacing and visibility */
+.section-content > * {
+    position: relative;
+    z-index: 2;
+}
 
 /* Custom scrollbar styling */
 ::-webkit-scrollbar {
@@ -1368,4 +1433,97 @@ textarea:focus-visible {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Navigation Enhancements */
+#mobile-menu {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.mobile-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-radius: 0.5rem;
+    position: relative;
+}
+
+.mobile-nav-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+    border-radius: 2px;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.mobile-nav-link:hover::before {
+    transform: scaleY(1);
+}
+
+/* Section Color Transitions */
+section {
+    position: relative;
+    overflow: hidden;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.05;
+    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Enhanced Card Animations */
+.bg-white\/5,
+.group {
+    transform-origin: center;
+    will-change: transform, opacity;
+}
+
+/* Mobile-Specific Improvements */
+@media (max-width: 768px) {
+    /* Better touch targets */
+    .mobile-nav-link {
+        min-height: 60px;
+        font-size: 1.25rem;
+    }
+    
+    /* Improved mobile menu animation */
+    #mobile-menu {
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    #mobile-menu:not(.translate-x-full) {
+        transform: translateX(0);
+    }
+    
+    /* Better mobile scrolling */
+    body {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Mobile-optimized section spacing */
+    section {
+        padding: 60px 16px;
+    }
+}
+
+/* Loading screen improvements for mobile */
+#loading {
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
