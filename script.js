@@ -701,53 +701,6 @@ enhancedStyles.textContent = `
 `;
 document.head.appendChild(enhancedStyles);
 
-// =====================================================
-// THEME TOGGLE FUNCTIONALITY
-// =====================================================
-
-const themeToggle = document.getElementById('theme-toggle');
-const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-const body = document.body;
-
-// Check for saved theme preference or default to light
-const currentTheme = localStorage.getItem('theme') || 'light';
-
-// Apply saved theme on load
-if (currentTheme === 'dark') {
-    body.classList.add('dark');
-    updateThemeIcon('dark');
-} else {
-    body.classList.remove('dark');
-    updateThemeIcon('light');
-}
-
-function toggleTheme() {
-    body.classList.toggle('dark');
-    const theme = body.classList.contains('dark') ? 'dark' : 'light';
-    localStorage.setItem('theme', theme);
-    updateThemeIcon(theme);
-}
-
-function updateThemeIcon(theme) {
-    const icons = document.querySelectorAll('#theme-toggle i, #theme-toggle-mobile i');
-    icons.forEach(icon => {
-        if (theme === 'dark') {
-            icon.className = 'fas fa-sun text-yellow-400';
-        } else {
-            icon.className = 'fas fa-moon text-gray-700';
-        }
-    });
-}
-
-// Add click handlers
-if (themeToggle) {
-    themeToggle.addEventListener('click', toggleTheme);
-}
-
-if (themeToggleMobile) {
-    themeToggleMobile.addEventListener('click', toggleTheme);
-}
-
 // Discover button smooth scroll
 const discoverBtn = document.getElementById('discover-btn');
 if (discoverBtn) {
