@@ -32,59 +32,40 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Mobile menu - Enhanced for better mobile experience
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileMenuClose = document.getElementById('mobile-menu-close');
-    
-    if (mobileMenuBtn && mobileMenu) {
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.remove('translate-x-full');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    // Mobile navigation (hamburger menu)
+    const mobileToggle = document.getElementById('mobile-menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (mobileToggle && navLinks) {
+        mobileToggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('active');
+            mobileToggle.classList.toggle('active', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+        });
+
+        // Close mobile nav when a link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    mobileToggle.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
         });
     }
 
-    if (mobileMenuClose && mobileMenu) {
-        mobileMenuClose.addEventListener('click', () => {
-            mobileMenu.classList.add('translate-x-full');
-            document.body.style.overflow = 'auto'; // Restore scrolling
-        });
-    }
-
-    // Close mobile menu when clicking on navigation links
-    document.querySelectorAll('.mobile-nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            if (mobileMenu) {
-                mobileMenu.classList.add('translate-x-full');
-                document.body.style.overflow = 'auto';
-            }
-        });
-    });
-
-    // Close mobile menu when clicking outside (on overlay)
-    if (mobileMenu) {
-        mobileMenu.addEventListener('click', (e) => {
-            if (e.target === mobileMenu) {
-                mobileMenu.classList.add('translate-x-full');
-                document.body.style.overflow = 'auto';
-            }
-        });
-    }
-
-    // Smooth scrolling for navigation links
+    // Smooth scrolling for navigation links (same-page only)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const href = this.getAttribute('href');
+            const target = document.querySelector(href);
             if (target) {
+                e.preventDefault();
                 target.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
-                // Close mobile menu if it exists
-                if (mobileMenu) {
-                    mobileMenu.classList.add('-translate-y-full');
-                }
             }
         });
     });
@@ -155,9 +136,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Navigation active link highlighting
     const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navLinkElements = document.querySelectorAll('.nav-link');
 
-    if (sections.length && navLinks.length) {
+    if (sections.length && navLinkElements.length) {
         window.addEventListener('scroll', () => {
             let current = '';
             sections.forEach(section => {
@@ -167,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
 
-            navLinks.forEach(link => {
+            navLinkElements.forEach(link => {
                 link.classList.remove('text-blue-400');
                 if (link.getAttribute('href') === `#${current}`) {
                     link.classList.add('text-blue-400');
