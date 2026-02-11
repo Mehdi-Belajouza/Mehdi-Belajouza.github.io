@@ -1,388 +1,166 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mehdi Belajouza - Full Stack Engineer</title>
-    <meta name="description" content="Full Stack Engineer specializing in modern web technologies">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Mehdi Belajouza - Full Stack Developer</title>
     
     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'inter': ['Inter', 'sans-serif'],
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.8s ease-out',
-                        'slide-up': 'slideUp 0.8s ease-out',
-                        'slide-in-left': 'slideInLeft 0.8s ease-out',
-                        'slide-in-right': 'slideInRight 0.8s ease-out',
-                        'float': 'float 3s ease-in-out infinite',
-                        'glow': 'glow 2s ease-in-out infinite alternate',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' }
-                        },
-                        slideUp: {
-                            '0%': { transform: 'translateY(50px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' }
-                        },
-                        slideInLeft: {
-                            '0%': { transform: 'translateX(-50px)', opacity: '0' },
-                            '100%': { transform: 'translateX(0)', opacity: '1' }
-                        },
-                        slideInRight: {
-                            '0%': { transform: 'translateX(50px)', opacity: '0' },
-                            '100%': { transform: 'translateX(0)', opacity: '1' }
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-20px)' }
-                        },
-                        glow: {
-                            '0%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.5)' },
-                            '100%': { boxShadow: '0 0 40px rgba(59, 130, 246, 0.8)' }
-                        }
-                    },
-                    backdropBlur: {
-                        xs: '2px',
-                    }
-                }
-            }
-        }
-    </script>
 </head>
-<body class="font-inter bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden">
-    
-    <!-- Loading Screen -->
-    <div id="loading" class="fixed inset-0 bg-gradient-to-br from-slate-900 to-purple-900 z-50 flex items-center justify-center transition-opacity duration-1000">
-        <div class="text-center">
-            <div class="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-            <p class="text-xl font-light">Loading Experience...</p>
-        </div>
-    </div>
-
+<body class="dark">
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-40 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-4">
-                <div class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                    Mehdi Belajouza
-                </div>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="nav-link text-gray-300 hover:text-white transition-colors duration-300 relative">Home</a>
-                    <a href="#about" class="nav-link text-gray-300 hover:text-white transition-colors duration-300 relative">About</a>
-                    <a href="#skills" class="nav-link text-gray-300 hover:text-white transition-colors duration-300 relative">Skills</a>
-                    <a href="#projects" class="nav-link text-gray-300 hover:text-white transition-colors duration-300 relative">Projects</a>
-                    <a href="#contact" class="nav-link text-gray-300 hover:text-white transition-colors duration-300 relative">Contact</a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden fixed inset-0 z-50 transform translate-x-full transition-all duration-500 ease-out">
-            <!-- Background Overlay -->
-            <div class="absolute inset-0 bg-black/80 backdrop-blur-md"></div>
-            
-            <!-- Menu Content -->
-            <div class="relative bg-gradient-to-br from-slate-900/95 via-purple-900/95 to-indigo-900/95 backdrop-blur-lg h-full w-full flex flex-col">
-                <!-- Header -->
-                <div class="flex justify-between items-center p-6 border-b border-white/20">
-                    <div class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                        Navigation
-                    </div>
-                    <button id="mobile-menu-close" class="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 hover:rotate-90">
-                        <i class="fas fa-times text-xl text-white"></i>
-                    </button>
-                </div>
-                
-                <!-- Navigation Links -->
-                <div class="flex-1 flex flex-col justify-center px-8 py-12 space-y-6">
-                    <a href="#home" class="mobile-nav-link group flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-400/50 transition-all duration-300">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
-                            <i class="fas fa-home text-lg"></i>
-                        </div>
-                        <span class="text-xl font-medium text-white group-hover:text-blue-400 transition-colors duration-300">Home</span>
-                    </a>
-                    
-                    <a href="#about" class="mobile-nav-link group flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-purple-400/50 transition-all duration-300">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
-                            <i class="fas fa-user text-lg"></i>
-                        </div>
-                        <span class="text-xl font-medium text-white group-hover:text-purple-400 transition-colors duration-300">About</span>
-                    </a>
-                    
-                    <a href="#skills" class="mobile-nav-link group flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-pink-400/50 transition-all duration-300">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-pink-600 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
-                            <i class="fas fa-code text-lg"></i>
-                        </div>
-                        <span class="text-xl font-medium text-white group-hover:text-pink-400 transition-colors duration-300">Skills</span>
-                    </a>
-                    
-                    <a href="#projects" class="mobile-nav-link group flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-green-400/50 transition-all duration-300">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
-                            <i class="fas fa-rocket text-lg"></i>
-                        </div>
-                        <span class="text-xl font-medium text-white group-hover:text-green-400 transition-colors duration-300">Projects</span>
-                    </a>
-                    
-                    <a href="#contact" class="mobile-nav-link group flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-yellow-400/50 transition-all duration-300">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-500 to-yellow-600 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
-                            <i class="fas fa-envelope text-lg"></i>
-                        </div>
-                        <span class="text-xl font-medium text-white group-hover:text-yellow-400 transition-colors duration-300">Contact</span>
-                    </a>
-                </div>
-                
-                <!-- Footer with Social Links -->
-                <div class="p-6 border-t border-white/20">
-                    <div class="text-center mb-4">
-                        <p class="text-gray-400 text-sm">Connect with me</p>
-                    </div>
-                    <div class="flex justify-center space-x-4">
-                        <a href="https://github.com/Mehdi-Belajouza" target="_blank" 
-                           class="p-3 rounded-full bg-white/10 hover:bg-blue-500/20 border border-white/20 hover:border-blue-400/50 transition-all duration-300 hover:scale-110">
-                            <i class="fab fa-github text-xl text-white"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/mehdi-belajouza/" target="_blank" 
-                           class="p-3 rounded-full bg-white/10 hover:bg-blue-500/20 border border-white/20 hover:border-blue-400/50 transition-all duration-300 hover:scale-110">
-                            <i class="fab fa-linkedin text-xl text-white"></i>
-                        </a>
-                        <a href="mailto:belajouza@et.esiea.fr" 
-                           class="p-3 rounded-full bg-white/10 hover:bg-red-500/20 border border-white/20 hover:border-red-400/50 transition-all duration-300 hover:scale-110">
-                            <i class="fas fa-envelope text-xl text-white"></i>
-                        </a>
-                    </div>
-                </div>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Mehdi Belajouza</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#design">Design</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="resume.html" class="btn-resume">See Resume</a>
+                <img src="profile.png" alt="Mehdi Belajouza" class="profile-icon">
             </div>
         </div>
     </nav>
 
-    <!-- Smooth Gradient Overlay for Section Transitions -->
-    <div id="gradient-overlay" class="fixed inset-0 pointer-events-none z-0 opacity-0 transition-all duration-1000 ease-in-out"></div>
-
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden section-gradient" data-gradient="slate-purple">
-        <!-- Animated Background Elements -->
-        <div class="absolute inset-0">
-            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full animate-float"></div>
-            <div class="absolute top-3/4 right-1/4 w-48 h-48 bg-purple-500/10 rounded-full animate-float" style="animation-delay: 1s;"></div>
-            <div class="absolute top-1/2 left-1/2 w-32 h-32 bg-pink-500/10 rounded-full animate-float" style="animation-delay: 2s;"></div>
-        </div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center">
-                <!-- Profile Image -->
-                <div class="mb-8 animate-fade-in">
-                    <div class="relative w-48 h-48 mx-auto">
-                        <img src="profile.webp" alt="Mehdi Belajouza" 
-                             class="w-full h-full rounded-full object-cover border-4 border-white/20 shadow-2xl animate-glow">
-                        <div class="absolute inset-0 bg-gradient-to-t from-blue-500/20 to-transparent rounded-full"></div>
-                    </div>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <p class="greeting">Howdy 👋 I'm Mehdi</p>
+            
+            <h1 class="hero-title">Building modern websites and creative solutions</h1>
+            
+            <div class="button-group">
+                <button class="btn btn-primary" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
+                    Discover
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <a href="mailto:belajouza@et.esiea.fr" class="btn btn-secondary">
+                    Get in touch
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            
+            <!-- Code Window -->
+            <div class="code-window">
+                <div class="window-header">
+                    <div class="window-dot red"></div>
+                    <div class="window-dot yellow"></div>
+                    <div class="window-dot green"></div>
+                    <div class="window-title">developer.tsx</div>
                 </div>
-
-                <!-- Text Content -->
-                <div class="space-y-6">
-                    <h1 class="text-5xl md:text-7xl font-bold animate-slide-up">
-                        <span class="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                            Full Stack
-                        </span>
-                        <br>
-                        <span class="text-white">Developer</span>
-                    </h1>
-                    
-                    <p class="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto animate-slide-up" style="animation-delay: 0.2s;">
-                        Crafting digital experiences with modern technologies and creative solutions
-                    </p>
-
-                    <!-- CTA Buttons -->
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up" style="animation-delay: 0.4s;">
-                        <a href="#projects" 
-                           class="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                            View My Work
-                        </a>
-                        <a href="#contact" 
-                           class="px-8 py-4 border-2 border-white/30 rounded-full text-white font-semibold hover:bg-white/10 transition-all duration-300 transform hover:scale-105 backdrop-blur-sm">
-                            Get In Touch
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Scroll Indicator -->
-                <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-                    <i class="fas fa-chevron-down text-2xl text-white/60"></i>
+                <div class="code-content">
+                    <pre><span class="code-keyword">const</span> <span class="code-var">developer</span> = {
+                    <span class="code-prop">name</span>: <span class="code-string">"Mehdi Belajouza"</span>,
+                    <span class="code-prop">role</span>: <span class="code-string">"Full Stack Developer"</span>,
+                    <span class="code-prop">location</span>: <span class="code-string">"Paris, France"</span>,
+                    <span class="code-prop">skills</span>: [
+                        <span class="code-string">"React"</span>, <span class="code-string">"Node.js"</span>, <span class="code-string">"Laravel"</span>,
+                        <span class="code-string">"Python"</span>, <span class="code-string">"Docker"</span>
+                    ],
+                    <span class="code-prop">currentlyLearning</span>: [<span class="code-string">"System Design"</span>, <span class="code-string">"Effective Ai Prompting"</span>, <span class="code-string">"Video Editing Tools"</span>, <br> <span class="code-string">"Digital Marketing Tricks"</span>],
+                    <span class="code-prop">openToWork</span>: <span class="code-keyword">true</span>
+                    };</pre>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 relative section-gradient transition-all duration-1000" data-gradient="purple-blue">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 opacity-0 transform translate-y-10 section-content">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                    About Me
-                </h2>
-                <p class="text-gray-300 text-lg max-w-2xl mx-auto">
-                    Passionate about creating exceptional digital experiences through code
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6">
-                    <h3 class="text-3xl font-bold text-white mb-6">Who I Am</h3>
-                    <p class="text-gray-300 leading-relaxed text-lg">
-                        I'm a passionate Full Stack Developer with expertise in modern web technologies. 
-                        I love turning complex problems into simple, beautiful, and intuitive solutions.
-                    </p>
-                    <p class="text-gray-300 leading-relaxed text-lg">
-                        With experience in both frontend and backend development, I create comprehensive 
-                        solutions that deliver exceptional user experiences and robust functionality.
-                    </p>
-
-                    <!-- Stats -->
-                    <div class="grid grid-cols-3 gap-6 mt-8">
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-blue-400">2+</div>
-                            <div class="text-gray-400">Years Experience</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-purple-400">15+</div>
-                            <div class="text-gray-400">Projects</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-pink-400">10+</div>
-                            <div class="text-gray-400">Technologies</div>
-                        </div>
+    <section id="about" class="about">
+        <div class="about-container">
+            <h2 class="section-title">Passionate Full Stack Developer</h2>
+            
+            <p class="about-text">
+                Welcome to my portfolio! I'm Mehdi, a passionate programmer and aspiring UI designer. 
+                I currently work as a Full Stack Developer specializing in modern web technologies.
+            </p>
+            
+            <p class="about-text">
+                My favourite and most used frameworks are <strong>React</strong>, <strong>Node.js</strong>, 
+                and <strong>Laravel</strong> for full-stack development.
+            </p>
+            
+            <!-- Services -->
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon icon-blue">
+                        <i class="fas fa-laptop-code"></i>
                     </div>
+                    <h3 class="service-title">Website Development</h3>
+                    <p class="service-description">
+                        Made with React, Laravel, or plain HTML and CSS. Landing page or full-stack application, 
+                        performance and SEO are guaranteed!
+                    </p>
                 </div>
-
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300">
-                        <i class="fas fa-code text-3xl text-blue-400 mb-4"></i>
-                        <h4 class="text-xl font-semibold mb-2">Clean Code</h4>
-                        <p class="text-gray-300 text-sm">Writing maintainable and scalable code</p>
+                
+                <div class="service-card">
+                    <div class="service-icon icon-purple">
+                        <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300">
-                        <i class="fas fa-rocket text-3xl text-purple-400 mb-4"></i>
-                        <h4 class="text-xl font-semibold mb-2">Innovation</h4>
-                        <p class="text-gray-300 text-sm">Always learning new technologies</p>
-                    </div>
-                    <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300">
-                        <i class="fas fa-users text-3xl text-pink-400 mb-4"></i>
-                        <h4 class="text-xl font-semibold mb-2">Collaboration</h4>
-                        <p class="text-gray-300 text-sm">Strong team player and communicator</p>
-                    </div>
-                    <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300">
-                        <i class="fas fa-layer-group text-3xl text-green-400 mb-4"></i>
-                        <h4 class="text-xl font-semibold mb-2">Full Stack</h4>
-                        <p class="text-gray-300 text-sm">End-to-end development expertise</p>
-                    </div>
+                    <h3 class="service-title">Full Stack Solutions</h3>
+                    <p class="service-description">
+                        Building complete solutions from database design to responsive frontend interfaces 
+                        with modern frameworks and best practices.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 relative section-gradient transition-all duration-1000" data-gradient="blue-cyan">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 opacity-0 transform translate-y-10 section-content">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                    Technical Skills
-                </h2>
-                <p class="text-gray-300 text-lg max-w-2xl mx-auto">
-                    Technologies and tools I use to bring ideas to life
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Frontend -->
-                <div class="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-300">
-                    <h3 class="text-2xl font-bold mb-6 text-blue-400">Frontend</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-4">
-                            <i class="fab fa-react text-2xl text-blue-400"></i>
-                            <span class="text-lg">React</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <i class="fab fa-js text-2xl text-yellow-400"></i>
-                            <span class="text-lg">JavaScript</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <i class="fab fa-html5 text-2xl text-orange-400"></i>
-                            <span class="text-lg">HTML5</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <i class="fab fa-css3-alt text-2xl text-blue-400"></i>
-                            <span class="text-lg">CSS3</span>
-                        </div>
+    <!-- Design Section -->
+    <section id="design" class="design-section">
+        <div class="design-container">
+            <h2 class="section-title">Design Portfolio</h2>
+            <p class="about-text">
+                Creative design work spanning branding, video production, and visual media.
+            </p>
+            
+            <div class="design-grid">
+                <!-- Design Item 1 -->
+                <div class="design-card">
+                    <div class="design-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="design-info">
+                        <h3 class="design-title">Video Production</h3>
+                        <p class="design-description">
+                            Creating engaging video content for brands, TV ads, and promotional material.
+                        </p>
                     </div>
                 </div>
-
-                <!-- Backend -->
-                <div class="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-300">
-                    <h3 class="text-2xl font-bold mb-6 text-purple-400">Backend</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-4">
-                            <i class="fab fa-node-js text-2xl text-green-400"></i>
-                            <span class="text-lg">Node.js</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <i class="fab fa-python text-2xl text-blue-400"></i>
-                            <span class="text-lg">Python</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <i class="fas fa-database text-2xl text-gray-400"></i>
-                            <span class="text-lg">SQL</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <i class="fab fa-php text-2xl text-purple-400"></i>
-                            <span class="text-lg">PHP</span>
-                        </div>
+                
+                <!-- Design Item 2 -->
+                <div class="design-card">
+                    <div class="design-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="design-info">
+                        <h3 class="design-title">Brand Identity</h3>
+                        <p class="design-description">
+                            Developing cohesive brand identities, menus, and marketing materials.
+                        </p>
                     </div>
                 </div>
-
-                <!-- Tools -->
-                <div class="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-300">
-                    <h3 class="text-2xl font-bold mb-6 text-pink-400">Tools & Cloud</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-4">
-                            <i class="fab fa-git-alt text-2xl text-red-400"></i>
-                            <span class="text-lg">Git</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <i class="fab fa-docker text-2xl text-blue-400"></i>
-                            <span class="text-lg">Docker</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <i class="fab fa-aws text-2xl text-orange-400"></i>
-                            <span class="text-lg">AWS</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <i class="fab fa-linux text-2xl text-yellow-400"></i>
-                            <span class="text-lg">Linux</span>
-                        </div>
+                
+                <!-- Design Item 3 -->
+                <div class="design-card">
+                    <div class="design-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                    <div class="design-info">
+                        <h3 class="design-title">Graphic Design</h3>
+                        <p class="design-description">
+                            Crafting compelling visuals for print, digital, and multimedia projects.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -390,225 +168,89 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 relative section-gradient transition-all duration-1000" data-gradient="indigo-pink">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 opacity-0 transform translate-y-10 section-content">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                    Featured Projects
-                </h2>
-                <p class="text-gray-300 text-lg max-w-2xl mx-auto">
-                    Some of my recent work that showcases my skills and creativity
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- JBL Tunisia Project -->
-                <div class="project-card group bg-gradient-to-br from-orange-500 to-red-500 rounded-3xl overflow-hidden hover-float transition-all duration-500">
-                    <div class="p-8 h-full flex flex-col">
-                        <div class="mb-4">
-                            <span class="text-white/80 text-sm font-medium">Internship Website</span>
-                            <h3 class="text-3xl font-bold text-white mt-2 mb-4">IVB</h3>
-                            <p class="text-white/90 leading-relaxed">
-                                A comprehensive Web application handles multiple users and holds a voice assistant management system built on Laravel. 
-                                The platform provides a complete solution for managing voice interactions, call handling, and AI-powered conversations with advanced analytics and monitoring capabilities.
-                            </p>
-                        </div>
-                        <div class="mt-auto flex gap-3">
-                            <a href="https://ionos.ivb.itfuture.net/" target="_blank" 
-                               class="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110">
-                                <i class="fab fa-github text-lg"></i>
-                            </a>
-                            <a href="#" target="_blank" 
-                               class="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110">
-                                <i class="fas fa-external-link-alt text-lg"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CheckMyHttps Project -->
-                <div class="project-card group bg-gradient-to-br from-teal-400 to-green-500 rounded-3xl overflow-hidden hover-float transition-all duration-500">
-                    <div class="p-8 h-full flex flex-col">
-                        <div class="mb-4">
-                            <span class="text-white/80 text-sm font-medium">Open Source</span>
-                            <h3 class="text-3xl font-bold text-white mt-2 mb-4">CheckMyHttps</h3>
-                            <p class="text-white/90 leading-relaxed">
-                                Browser extension for HTTPS security verification that helps users detect potential 
-                                man-in-the-middle attacks and ensures secure connections.
-                            </p>
-                        </div>
-                        <div class="mt-auto flex gap-3">
-                            <a href="https://github.com/checkmyhttps/checkmyhttps" target="_blank" 
-                               class="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110">
-                                <i class="fab fa-github text-lg"></i>
-                            </a>
-                            <a href="https://checkmyhttps.net/" target="_blank" 
-                               class="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110">
-                                <i class="fas fa-external-link-alt text-lg"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Esports Project -->
-                <div class="project-card group bg-gradient-to-br from-purple-600 to-indigo-600 rounded-3xl overflow-hidden hover-float transition-all duration-500">
-                    <div class="p-8 h-full flex flex-col">
-                        <div class="mb-4">
-                            <span class="text-white/80 text-sm font-medium">Personal Project</span>
-                            <h3 class="text-3xl font-bold text-white mt-2 mb-4">Esports Hub</h3>
-                            <p class="text-white/90 leading-relaxed">
-                            Esports Hub is a modern, responsive web platform designed for the Tunisian Esports and broader MENA community.
-                            It serves as a centralized, fast, and lightweight hub providing comprehensive coverage of professional gaming teams, tournaments, players, and news.
-                            It is still under development.
-                            </p>
-                        </div>
-                        <div class="mt-auto flex gap-3">
-                            <a href="https://github.com/Mehdi-Belajouza/lol-esports-hub" target="_blank" 
-                               class="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110">
-                                <i class="fab fa-github text-lg"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CityTripMapper Project -->
-                <div class="project-card group bg-gradient-to-br from-indigo-600 to-purple-600 rounded-3xl overflow-hidden hover-float transition-all duration-500">
-                    <div class="p-8 h-full flex flex-col">
-                        <div class="mb-4">
-                            <span class="text-white/80 text-sm font-medium">University Project</span>
-                            <h3 class="text-3xl font-bold text-white mt-2 mb-4">CityTripMapper</h3>
-                            <p class="text-white/90 leading-relaxed">
-                                Tourist guide platform with microservices architecture for planning and 
-                                discovering destinations. Built with React, Node.js, and MongoDB.
-                            </p>
-                        </div>
-                        <div class="mt-auto flex gap-3">
-                            <a href="https://github.com/CityTripMapper/CityTripMapper" target="_blank" 
-                               class="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110">
-                                <i class="fab fa-github text-lg"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portfolio Designer Project -->
-                <div class="project-card group bg-gradient-to-br from-pink-500 to-rose-500 rounded-3xl overflow-hidden hover-float transition-all duration-500">
-                    <div class="p-8 h-full flex flex-col">
-                        <div class="mb-4">
-                            <span class="text-white/80 text-sm font-medium">University Project</span>
-                            <h3 class="text-3xl font-bold text-white mt-2 mb-4">Doctolib Application UI/UX</h3>
-                            <p class="text-white/90 leading-relaxed">
-                                Concept of improving the doctolib application interface . And optimize it for the users on mobile devices.
-                            </p>
-                        </div>
-                        <a href="https://www.figma.com/" target="_blank" 
-                            class="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110">
-                            <i class="fas fa-external-link-alt text-lg"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- See More Card -->
-                <div class="project-card group bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl overflow-hidden hover-float transition-all duration-500 flex items-center justify-center">
-                    <a href="https://github.com/Mehdi-Belajouza" target="_blank" class="text-center p-8">
-                        <div class="text-5xl font-bold text-white mb-2">13+</div>
-                        <div class="text-white/80 text-lg">More Projects Soon</div>
-                        <div class="text-white/60 text-sm mt-2">See them all on GitHub</div>
-                        <div class="mt-4">
-                            <i class="fas fa-arrow-right text-white text-xl"></i>
-                        </div>
-                    </a>
-                </div>
+    <section id="projects" class="projects">
+        <div class="projects-container">
+            <h2 class="section-title">Featured Projects</h2>
+            
+            <div class="projects-grid">
+                <!-- Project 1: IVB -->
+                <a href="https://ionos.ivb.itfuture.net/" target="_blank" class="project-card" style="background-color: #f97316;">
+                    <div class="category">Internship Website</div>
+                    <div class="title">IVB</div>
+                    <div class="description">Comprehensive voice assistant management system built on Laravel with AI-powered conversations and advanced analytics.</div>
+                </a>
+                <!-- Project 2: CheckMyHttps -->
+                <a href="https://checkmyhttps.net/" target="_blank" class="project-card" style="background-color: #14b8a6;">
+                    <div class="category">Open Source</div>
+                    <div class="title">CheckMyHttps</div>
+                    <div class="description">Browser extension for HTTPS security verification that helps users detect potential man-in-the-middle attacks.</div>
+                </a>
+                <!-- Project 3: Esports Hub -->
+                <a href="https://github.com/Mehdi-Belajouza/lol-esports-hub" target="_blank" class="project-card" style="background-color: #a855f7;">
+                    <div class="category">Personal Project</div>
+                    <div class="title">Esports Hub</div>
+                    <div class="description">Modern platform for the Tunisian Esports and MENA community providing tournament coverage, player stats, and news.</div>
+                </a>
+                <!-- Project 4: CityTripMapper -->
+                <a href="https://github.com/CityTripMapper/CityTripMapper" target="_blank" class="project-card" style="background-color: #3b82f6;">
+                    <div class="category">University Project</div>
+                    <div class="title">CityTripMapper</div>
+                    <div class="description">Tourist guide platform with microservices architecture. Built with React, Node.js, and MongoDB.</div>
+                </a>
+                <!-- Project 5: Doctolib UI/UX -->
+                <a href="#" class="project-card" style="background-color: #06b6d4;">
+                    <div class="category">University Project</div>
+                    <div class="title">Doctolib Application Redesign</div>
+                    <div class="description">Improved interface concept for Doctolib application optimized for mobile devices.</div>
+                </a>
+                <!-- View All Projects -->
+                <a href="projects.html" class="project-card project-card-more">
+                    <div>See 3 more...</div>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 relative section-gradient transition-all duration-1000" data-gradient="purple-rose">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 opacity-0 transform translate-y-10 section-content">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                    Let's Work Together
-                </h2>
-                <p class="text-gray-300 text-lg max-w-2xl mx-auto">
-                    Ready to bring your next project to life? Let's connect and create something amazing together.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-12">
-                <!-- Contact Info -->
-                <div class="space-y-8">
-                    <div class="flex items-center gap-4 p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10">
-                        <div class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center">
-                            <i class="fas fa-envelope text-blue-400"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold">Email</h3>
-                            <p class="text-gray-300">belajouza@et.esiea.fr</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center gap-4 p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10">
-                        <div class="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
-                            <i class="fas fa-map-marker-alt text-purple-400"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold">Location</h3>
-                            <p class="text-gray-300">Paris, France</p>
-                        </div>
-                    </div>
-
-                    <!-- Social Links -->
-                    <div class="flex gap-4">
-                        <a href="https://github.com/Mehdi-Belajouza" target="_blank" 
-                           class="p-4 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-110">
-                            <i class="fab fa-github text-2xl"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/mehdi-belajouza/" target="_blank" 
-                           class="p-4 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-110">
-                            <i class="fab fa-linkedin text-2xl"></i>
-                        </a>
-                        <a href="mailto:belajouza@et.esiea.fr" 
-                           class="p-4 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-110">
-                            <i class="fas fa-envelope text-2xl"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Contact Form -->
-                <form class="space-y-6 bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10">
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Name</label>
-                        <input type="text" required 
-                               class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:border-blue-400 focus:outline-none transition-colors">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Email</label>
-                        <input type="email" required 
-                               class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:border-blue-400 focus:outline-none transition-colors">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Message</label>
-                        <textarea rows="4" required 
-                                  class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:border-blue-400 focus:outline-none transition-colors resize-none"></textarea>
-                    </div>
-                    <button type="submit" 
-                            class="w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg text-white font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
-                        Send Message
-                    </button>
-                </form>
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <h2 class="section-title">Let's work together</h2>
+            <p class="about-text">
+                Feel free to reach out for collaborations or just a friendly chat.
+            </p>
+            
+            <div class="contact-links">
+                <a href="https://github.com/Mehdi-Belajouza" target="_blank" class="contact-link">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/mehdi-belajouza/" target="_blank" class="contact-link">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:belajouza@et.esiea.fr" class="contact-link">
+                    <i class="fas fa-envelope"></i>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-8 border-t border-white/10 section-gradient" data-gradient="slate-black">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-gray-400">© 2024 Mehdi Belajouza. Built with ❤️ and modern web technologies.</p>
-        </div>
+    <footer>
+        <p>&copy; 2026 Mehdi Belajouza. All rights reserved.</p>
     </footer>
 
-    <!-- Custom JavaScript -->
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+    
+    <!-- Main Script -->
     <script src="script.js"></script>
 </body>
 </html>
