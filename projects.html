@@ -12,8 +12,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+
     <!-- Navigation -->
-    <nav>
+    <nav id="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">Mehdi Belajouza</a>
             
@@ -50,9 +53,9 @@
     <!-- Projects Section -->
     <section id="projects" class="projects" style="padding-top: 0;">
         <div class="projects-container">
-            <div class="projects-list">
+            <div class="projects-list reveal-container">
                 <!-- Project 1: IVB -->
-                <a href="https://ionos.ivb.itfuture.net/" target="_blank" class="project-card-large" style="--bg-image: url('images/iVB.png');">
+                <a href="https://ionos.ivb.itfuture.net/" target="_blank" class="project-card-large reveal-child" style="--bg-image: url('images/iVB.png');">
                     <div class="project-content-left">
                         <span class="project-badge-large">WORK IN PROGRESS</span>
                         <span class="project-category-large">Internship Website</span>
@@ -82,7 +85,7 @@
                 </a>
                 
                 <!-- Project 2: CheckMyHttps -->
-                <a href="https://checkmyhttps.net/" target="_blank" class="project-card-large" style="--bg-image: url('images/checkmyhttps.png');">
+                <a href="https://checkmyhttps.net/" target="_blank" class="project-card-large reveal-child" style="--bg-image: url('images/checkmyhttps.png');">
                     <div class="project-content-left">
                         <span class="project-category-large">Open Source</span>
                         <h3 class="project-title-large">CheckMyHttps</h3>
@@ -110,7 +113,7 @@
                 </a>
                 
                 <!-- Project 3: Esports Hub -->
-                <a href="https://github.com/Mehdi-Belajouza/lol-esports-hub" target="_blank" class="project-card-large" style="--bg-image: url('images/Internation Esports.png');">
+                <a href="https://github.com/Mehdi-Belajouza/lol-esports-hub" target="_blank" class="project-card-large reveal-child" style="--bg-image: url('images/esports.png');">
                     <div class="project-content-left">
                         <span class="project-badge-large">UNDER DEVELOPMENT</span>
                         <span class="project-category-large">Personal Project</span>
@@ -136,7 +139,7 @@
                 </a>
                 
                 <!-- Project 4: CityTripMapper -->
-                <a href="https://github.com/CityTripMapper/CityTripMapper" target="_blank" class="project-card-large" style="--bg-image: url('images/citytripmapper.png');">
+                <a href="https://github.com/CityTripMapper/CityTripMapper" target="_blank" class="project-card-large reveal-child" style="--bg-image: url('images/citytrip.png');">
                     <div class="project-content-left">
                         <span class="project-category-large">University Project</span>
                         <h3 class="project-title-large">CityTripMapper</h3>
@@ -322,6 +325,10 @@
         <p>&copy; 2026 Mehdi Belajouza. All rights reserved.</p>
     </footer>
     
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
     <!-- Main Script -->
     <script src="script.js"></script>
 </body>

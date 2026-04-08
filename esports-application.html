@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mehdi Belajouza — Esports Application</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ── Reset & base ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+            font-size: 10.5pt;
+            color: #1a1a1a;
+            background: #e8e8e8;
+            line-height: 1.55;
+        }
+
+        /* ── Page wrapper (screen preview) ── */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            background: #fff;
+            margin: 2rem auto;
+            padding: 16mm 17mm;
+            box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+            page-break-after: always;
+        }
+
+        /* ── Download button (screen only) ── */
+        .download-bar {
+            width: 210mm;
+            margin: 1.5rem auto 0;
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem;
+        }
+
+        .btn-pdf {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.6rem 1.4rem;
+            background: #c89b3c;
+            color: #fff;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            letter-spacing: 0.02em;
+            transition: background 0.2s;
+        }
+        .btn-pdf:hover { background: #a37a2e; }
+
+        /* ══════════════════════════════════════
+           RESUME PAGE
+        ═══════════════════════════════════════ */
+
+        /* Header */
+        .r-header {
+            border-bottom: 2.5px solid #c89b3c;
+            padding-bottom: 14px;
+            margin-bottom: 22px;
+        }
+
+        .r-name {
+            font-size: 22pt;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            color: #0f1115;
+        }
+
+        .r-role {
+            font-size: 10.5pt;
+            font-weight: 500;
+            color: #c89b3c;
+            margin-top: 2px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .r-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem 1.2rem;
+            margin-top: 8px;
+            font-size: 8.5pt;
+            color: #555;
+        }
+
+        .r-contact a { color: #555; text-decoration: none; }
+        .r-contact a:hover { color: #c89b3c; }
+        .r-contact span::before { content: "•"; margin-right: 0.35rem; color: #c89b3c; }
+        .r-contact span:first-child::before { content: ""; margin-right: 0; }
+
+        /* Two-column layout */
+        .r-body {
+            display: grid;
+            grid-template-columns: 1fr 0.52fr;
+            gap: 0 1.8rem;
+            margin-top: 14px;
+        }
+
+        /* Section */
+        .r-section { margin-bottom: 24px; }
+
+        .r-section-title {
+            font-size: 8.5pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #c89b3c;
+            border-bottom: 1px solid #e8dcc8;
+            padding-bottom: 5px;
+            margin-bottom: 13px;
+        }
+
+        /* Experience / Education block */
+        .r-block { margin-bottom: 15px; }
+        .r-block:last-child { margin-bottom: 0; }
+
+        .r-block-title {
+            font-size: 10.5pt;
+            font-weight: 700;
+            color: #0f1115;
+        }
+
+        .r-block-sub {
+            font-size: 9pt;
+            font-weight: 500;
+            color: #444;
+            margin-top: 1px;
+        }
+
+        .r-block-meta {
+            font-size: 8pt;
+            color: #888;
+            margin-top: 1px;
+            margin-bottom: 7px;
+        }
+
+        .r-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .r-list li {
+            font-size: 9.5pt;
+            color: #333;
+            line-height: 1.65;
+            padding-left: 1rem;
+            position: relative;
+            margin-bottom: 4px;
+        }
+
+        .r-list li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #c89b3c;
+            font-size: 7pt;
+            top: 2px;
+        }
+
+        /* Tags */
+        .r-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 4px;
+        }
+
+        .r-tag {
+            font-size: 8pt;
+            background: #f5f0e8;
+            color: #6b5a2f;
+            border: 1px solid #e8dcc8;
+            border-radius: 3px;
+            padding: 2px 7px;
+            font-weight: 500;
+        }
+
+        .r-tag-soft {
+            background: #f2f2f2;
+            color: #444;
+            border-color: #ddd;
+        }
+
+        /* Divider between experiences */
+        .r-block + .r-block { border-top: 1px dashed #f0e8d8; padding-top: 13px; }
+
+        /* ══════════════════════════════════════
+           MOTIVATION LETTER PAGE
+        ═══════════════════════════════════════ */
+
+        .m-header {
+            margin-bottom: 24px;
+        }
+
+        .m-name {
+            font-size: 14pt;
+            font-weight: 700;
+            color: #0f1115;
+        }
+
+        .m-contact-line {
+            font-size: 9pt;
+            color: #666;
+            margin-top: 3px;
+        }
+
+        .m-contact-line a { color: #666; text-decoration: none; }
+
+        .m-divider {
+            border: none;
+            border-top: 2px solid #c89b3c;
+            margin: 14px 0;
+        }
+
+        .m-recipient {
+            margin-bottom: 20px;
+        }
+
+        .m-recipient p {
+            font-size: 10pt;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .m-subject {
+            font-size: 11pt;
+            font-weight: 700;
+            color: #0f1115;
+            margin-bottom: 20px;
+        }
+
+        .m-subject span { color: #c89b3c; }
+
+        .m-body p {
+            font-size: 10.5pt;
+            color: #222;
+            line-height: 1.75;
+            margin-bottom: 14px;
+            text-align: justify;
+        }
+
+        .m-sign {
+            margin-top: 32px;
+        }
+
+        .m-sign p {
+            font-size: 10pt;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .m-sign .m-sign-name {
+            font-size: 12pt;
+            font-weight: 700;
+            color: #0f1115;
+            margin-top: 6px;
+        }
+
+        .m-date-line {
+            font-size: 9pt;
+            color: #888;
+            text-align: right;
+            margin-bottom: 24px;
+        }
+
+        /* ══════════════════════════════════════
+           PRINT STYLES
+        ═══════════════════════════════════════ */
+        @media print {
+            body { background: #fff; }
+
+            .download-bar { display: none; }
+
+            .page {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 8mm 10mm;
+                box-shadow: none;
+                overflow: hidden;
+                page-break-after: avoid;
+            }
+
+            /* Compress all spacing so content fits one page */
+            .r-name       { font-size: 19pt; }
+            .r-role       { font-size: 9.5pt; margin-top: 1px; }
+            .r-contact    { font-size: 8pt; margin-top: 5px; gap: 0.2rem 0.9rem; }
+            .r-header     { padding-bottom: 8px; margin-bottom: 12px; }
+            .r-body       { margin-top: 6px; gap: 0 1.4rem; }
+
+            .r-section         { margin-bottom: 12px; }
+            .r-section-title   { padding-bottom: 3px; margin-bottom: 7px; font-size: 7.5pt; }
+
+            .r-block                 { margin-bottom: 7px; }
+            .r-block + .r-block      { border-top: 1px dashed #f0e8d8; padding-top: 7px; }
+            .r-block-title           { font-size: 9.5pt; }
+            .r-block-sub             { font-size: 8.5pt; }
+            .r-block-meta            { font-size: 7.5pt; margin-bottom: 3px; }
+
+            .r-list li { font-size: 8.5pt; line-height: 1.45; margin-bottom: 2px; }
+
+            .r-tags  { gap: 3px; margin-top: 3px; }
+            .r-tag   { font-size: 7.5pt; padding: 1px 5px; }
+
+            @page {
+                size: A4;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ── Download bar (screen only) ── -->
+    <div class="download-bar">
+        <button class="btn-pdf" onclick="window.print()">
+            &#8595; Save as PDF
+        </button>
+        <button class="btn-pdf" style="background:#555;" onclick="window.location.href='index.html'">
+            &#8592; Portfolio
+        </button>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 1 — RESUME
+    ═══════════════════════════════════════ -->
+    <div class="page">
+
+        <!-- Header -->
+        <header class="r-header">
+            <div class="r-name">Mehdi Belajouza</div>
+            <div class="r-role">Esports &amp; Community — Competition, Operations &amp; Platform</div>
+            <div class="r-contact">
+                <span>belajouzamehdi123@gmail.com</span>
+                <span>+33 6 11 38 71 75</span>
+                <span>Gentilly, France</span>
+                <span><a href="https://www.linkedin.com/in/mehdi-belajouza/">linkedin.com/in/mehdi-belajouza</a></span>
+                <span><a href="https://github.com/Mehdi-Belajouza">github.com/Mehdi-Belajouza</a></span>
+                <span><a href="https://mehdi-belajouza.github.io/">mehdi-belajouza.github.io</a></span>
+            </div>
+        </header>
+
+        <!-- Two-column body -->
+        <div class="r-body">
+
+            <!-- LEFT column -->
+            <div>
+
+                <!-- Esports Experience -->
+                <section class="r-section">
+                    <div class="r-section-title">Esports &amp; Community Experience</div>
+
+                    <div class="r-block">
+                        <div class="r-block-title">LoL Esports Fandom Wiki</div>
+                        <div class="r-block-sub">Verified Editor — Voluntary Contributor</div>
+                        <div class="r-block-meta">2019 – Present · Remote</div>
+                        <ul class="r-list">
+                            <li>Verified editor for 6+ years, with a focus on MENA and international competitive coverage of league of legends</li>
+                            <li>Built and maintained tournament brackets, match schedules, and team roster pages</li>
+                            <li>Wrote and edited articles covering competitive matches, player performances, and regional tournaments</li>
+                            <li>Collaborated with a global volunteer network to ensure accurate and timely documentation of the esports scene</li>
+                        </ul>
+                    </div>
+
+                    <div class="r-block">
+                        <div class="r-block-title">EPI Gaming Freaks</div>
+                        <div class="r-block-sub">President &amp; Communication Manager</div>
+                        <div class="r-block-meta">2020 · EPI International Multidisciplinary School, Sousse</div>
+                        <ul class="r-list">
+                            <li>Presided over the official esports club of EPI, overseeing its operations and competitive agenda</li>
+                            <li>Organized and managed the club's internal competitive events and structured tournament formats</li>
+                            <li>Acted as Communication Manager: ran community outreach across Discord and social media platforms</li>
+                            <li>Coordinated between student members and the institution to grow the club's presence and participation</li>
+                        </ul>
+                    </div>
+
+                    <div class="r-block">
+                        <div class="r-block-title">LoL Esports Data Hub</div>
+                        <div class="r-block-sub">Personal Project — Full-Stack Developer &amp; Researcher</div>
+                        <div class="r-block-meta">August 2024 – Present</div>
+                        <ul class="r-list">
+                            <li>Built a platform visualizing 10+ years of LoL competitive history, player data, and team roster evolution</li>
+                            <li>Engineered a custom data pipeline processing 50,000+ data points from the Fandom Wiki API</li>
+                            <li>Designed a "Trophy Wall" feature covering 200+ team achievements and tournament histories</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Professional Experience (condensed) -->
+                <section class="r-section">
+                    <div class="r-section-title">Professional Experience</div>
+
+                    <div class="r-block">
+                        <div class="r-block-title">IT Future AG — Full-Stack Developer Intern</div>
+                        <div class="r-block-meta">Jun 2024 – Sep 2024 · Switzerland (International)</div>
+                        <ul class="r-list">
+                            <li>Developed AI voice assistant with OpenAI API; built GDPR-compliant data pipeline (10,000+ records)</li>
+                            <li>Optimized Laravel components to sub-200ms load times across 3 languages</li>
+                        </ul>
+                    </div>
+
+                    <div class="r-block">
+                        <div class="r-block-title">IT Future AG — Full-Stack Developer Intern</div>
+                        <div class="r-block-meta">May 2023 – Aug 2023 · Switzerland</div>
+                        <ul class="r-list">
+                            <li>Built scalable Laravel/MySQL application serving 500+ daily users</li>
+                            <li>Implemented role-based access control, improving platform security by 30%</li>
+                        </ul>
+                    </div>
+
+                    <div class="r-block">
+                        <div class="r-block-title">Freelance Graphic Designer</div>
+                        <div class="r-block-meta">Ongoing · Remote</div>
+                        <ul class="r-list">
+                            <li>Branding, visual identity, and marketing material design for various clients</li>
+                        </ul>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- RIGHT column -->
+            <div>
+
+                <!-- Education -->
+                <section class="r-section">
+                    <div class="r-section-title">Education</div>
+
+                    <div class="r-block">
+                        <div class="r-block-title">ESIEA Paris</div>
+                        <div class="r-block-sub">Master's — Software Engineering</div>
+                        <div class="r-block-meta">Sep 2022 – Dec 2024 · France</div>
+                    </div>
+
+                    <div class="r-block">
+                        <div class="r-block-title">EPI International School</div>
+                        <div class="r-block-sub">Master's — Computer Science Engineering</div>
+                        <div class="r-block-meta">Sep 2019 – Jun 2022 · Tunisia</div>
+                    </div>
+                </section>
+
+                <!-- Languages -->
+                <section class="r-section">
+                    <div class="r-section-title">Languages</div>
+                    <div class="r-tags">
+                        <span class="r-tag">Arabic — Native</span>
+                        <span class="r-tag">French — Fluent</span>
+                        <span class="r-tag">English — Fluent</span>
+                        <span class="r-tag">German — Conversational</span>
+                    </div>
+                </section>
+
+                <!-- Relevant Skills -->
+                <section class="r-section">
+                    <div class="r-section-title">Esports Skills</div>
+                    <div class="r-tags">
+                        <span class="r-tag">Tournament Organisation</span>
+                        <span class="r-tag">Bracket Building</span>
+                        <span class="r-tag">Match Scheduling</span>
+                        <span class="r-tag">Community Management</span>
+                        <span class="r-tag">Discord Moderation</span>
+                        <span class="r-tag">Content Writing</span>
+                        <span class="r-tag">Wiki Editing</span>
+                        <span class="r-tag">Event Coordination</span>
+                        <span class="r-tag">Club Leadership</span>
+                        <span class="r-tag">Graphic Design</span>
+                    </div>
+                </section>
+
+                <!-- Technical Skills (brief) -->
+                <section class="r-section">
+                    <div class="r-section-title">Technical Skills</div>
+                    <div class="r-tags">
+                        <span class="r-tag r-tag-soft">Laravel · React · Node.js</span>
+                        <span class="r-tag r-tag-soft">Python · Docker · MySQL</span>
+                        <span class="r-tag r-tag-soft">AWS · REST APIs · Git</span>
+                        <span class="r-tag r-tag-soft">Figma · Adobe Tools</span>
+                    </div>
+                </section>
+
+                <!-- Certifications (brief) -->
+                <section class="r-section">
+                    <div class="r-section-title">Certifications</div>
+                    <div class="r-block">
+                        <div class="r-block-title" style="font-size:9pt;">AWS Certified Cloud Practitioner</div>
+                        <div class="r-block-sub" style="font-size:8pt;">Amazon Web Services</div>
+                    </div>
+                    <div class="r-block" style="margin-top:6px;">
+                        <div class="r-block-title" style="font-size:9pt;">Google Cloud Skills Boost</div>
+                        <div class="r-block-sub" style="font-size:8pt;">10+ validated labs — Kubernetes &amp; Data Analytics</div>
+                    </div>
+                    <div class="r-block" style="margin-top:6px;">
+                        <div class="r-block-title" style="font-size:9pt;">CCNA 1 &amp; 2</div>
+                        <div class="r-block-sub" style="font-size:8pt;">Cisco Networking Academy</div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 2 — MOTIVATION LETTER · commented out · remove style="display:none" to re-enable -->
+    <div class="page" style="display:none">
+
+        <!-- Sender block -->
+        <div class="m-header">
+            <div class="m-name">Mehdi Belajouza</div>
+            <div class="m-contact-line">
+                belajouzamehdi123@gmail.com &nbsp;·&nbsp; +33 6 11 38 71 75 &nbsp;·&nbsp; Gentilly, France
+            </div>
+        </div>
+
+        <div class="m-date-line">April 2026</div>
+
+        <!-- Recipient -->
+        <div class="m-recipient">
+            <p><strong>Esports LOL Tunisia</strong><br>
+            Application Committee</p>
+        </div>
+
+        <hr class="m-divider">
+
+        <!-- Subject -->
+        <div class="m-subject">
+            Subject: Application for an Esports Role — <span>Esports LOL Tunisia</span>
+        </div>
+
+        <!-- Body -->
+        <div class="m-body">
+
+            <p>Dear Esports LOL Tunisia Committee,</p>
+
+            <p>
+                I am writing to express my strong interest in contributing to your organisation. Esports —
+                and League of Legends in particular — has been a central part of my life for years. I spend
+                a significant portion of my day reading, writing, and thinking about the competitive scene.
+                This is not something I pursue for professional gain alone; it is something I genuinely love
+                and feel deeply invested in.
+            </p>
+
+            <p>
+                Since 2019, I have been a verified editor on the League of Legends Fandom Wiki, contributing
+                entirely on a voluntary basis. Over those six-plus years, I have built tournament brackets,
+                maintained match schedules, and written articles covering competitive events — with a
+                particular focus on the MENA region. I continue to do this because I believe that documenting
+                and amplifying our regional scene matters, and that it deserves the same level of care and
+                rigor as any other major region.
+            </p>
+
+            <p>
+                During my university years in Tunisia, I served as President of EPI Gaming Freaks and later
+                as the club's Communication Manager. In those roles, I organised the club's competitive events,
+                structured its internal tournaments, and managed community platforms including Discord and social
+                media. That experience gave me first-hand knowledge of what it takes to run an esports organisation
+                from the inside.
+            </p>
+
+            <p>
+                Beyond esports, I hold a Master's degree in Software Engineering from ESIEA Paris and have worked
+                as a full-stack developer both nationally and internationally. I also work as a freelance graphic designer.
+                This combination means I can contribute not only from a passion and community standpoint, but also from
+                a technical and creative one — whether that involves managing platforms, building tools, designing
+                communication assets, or supporting operations.
+            </p>
+
+            <p>
+                What drives me most is the desire to improve the visibility of Tunisian and MENA esports talent.
+                I want to create environments where players are motivated to compete, improve, and be recognised.
+                I have ideas I would love to bring to your organisation, and I am ready to invest the time and
+                effort to help make them a reality.
+            </p>
+
+            <p>
+                I would be glad to provide endorsements from collaborators on the Fandom Wiki and from people
+                I have worked with in the community. I am happy to discuss my background further at your convenience.
+            </p>
+
+            <p>Thank you for your time and consideration.</p>
+
+        </div>
+
+        <!-- Signature -->
+        <div class="m-sign">
+            <p>Sincerely,</p>
+            <p class="m-sign-name">Mehdi Belajouza</p>
+            <p style="font-size:9pt;color:#888;margin-top:4px;">
+                belajouzamehdi123@gmail.com &nbsp;·&nbsp;
+                <a href="https://www.linkedin.com/in/mehdi-belajouza/" style="color:#888;text-decoration:none;">LinkedIn</a>
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>

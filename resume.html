@@ -12,15 +12,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="resume-body">
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+
     <div class="resume-container">
         <!-- Header -->
         <header class="resume-header">
             <div class="resume-header-top">
                 <div class="resume-profile">
-                    <img src="profile.webp" alt="Mehdi Belajouza" class="resume-photo">
+                    <img src="./images/profile.png" alt="Mehdi Belajouza" class="resume-photo">
                     <div class="resume-title-section">
                         <h1 class="resume-name">MEHDI BELAJOUZA</h1>
-                        <p class="resume-role">Junior Full-Stack Developer</p>
+                        <p class="resume-role">Full-Stack Developer</p>
                     </div>
                 </div>
                 <button class="btn-download-pdf" onclick="window.print()">
@@ -46,10 +49,10 @@
             <!-- Left Column -->
             <div class="resume-left">
                 <!-- Experience -->
-                <section class="resume-section">
+                <section class="resume-section reveal-container">
                     <h2 class="resume-section-title"># Work Experience</h2>
                     
-                    <div class="resume-item">
+                    <div class="resume-item reveal-child">
                         <h3 class="resume-item-title">IT Future AG</h3>
                         <p class="resume-item-subtitle">Full-Stack Software Developer Intern | June 2024 - September 2024</p>
                         <ul class="resume-list">
@@ -60,7 +63,7 @@
                         </ul>
                     </div>
 
-                    <div class="resume-item">
+                    <div class="resume-item reveal-child">
                         <h3 class="resume-item-title">IT Future AG</h3>
                         <p class="resume-item-subtitle">Full-Stack Software Developer Intern | May 2023 - August 2023</p>
                         <ul class="resume-list">
@@ -73,10 +76,10 @@
                 </section>
 
                 <!-- Projects -->
-                <section class="resume-section">
+                <section class="resume-section reveal-container">
                     <h2 class="resume-section-title"># Projects</h2>
                     
-                    <div class="resume-item">
+                    <div class="resume-item reveal-child">
                         <h3 class="resume-item-title">CityTripMapper - Tourist Guide Platform</h3>
                         <p class="resume-item-subtitle">September 2023 - November 2023</p>
                         <ul class="resume-list">
@@ -87,7 +90,7 @@
                         </ul>
                     </div>
 
-                    <div class="resume-item">
+                    <div class="resume-item reveal-child">
                         <h3 class="resume-item-title">CheckMyHTTPS Browser Security Enhancement Extension</h3>
                         <p class="resume-item-subtitle">January 2023 - April 2023</p>
                         <ul class="resume-list">
@@ -114,10 +117,10 @@
             <!-- Right Column -->
             <div class="resume-right">
                 <!-- Education -->
-                <section class="resume-section">
+                <section class="resume-section reveal-container">
                     <h2 class="resume-section-title"># Education</h2>
                     
-                    <div class="resume-item">
+                    <div class="resume-item reveal-child">
                         <h3 class="resume-item-title">École d'Ingénieurs ESIEA</h3>
                         <p class="resume-item-subtitle">Master's in Software Engineering (Double Diploma)</p>
                         <p class="resume-item-description">Paris, France | September 2022 - December 2024</p>
@@ -146,7 +149,7 @@
                         <p class="resume-item-description">Hands-on experience validated through 10+ labs, demonstrating proficiency in Google Cloud, Kubernetes, and Data Analytics</p>
                     </div>
 
-                    <div class="resume-item">
+                    <div class="resume-item reveal-child">
                         <h3 class="resume-item-title">CCNA 1 & 2</h3>
                         <p class="resume-item-subtitle">Cisco Networking Academy</p>
                         <p class="resume-item-description">Mastered network design and configuration fundamentals including routing, switching, and network protocols. Acquired expertise in IP addressing, subnetting, VLANs, and network security best practices</p>
@@ -154,9 +157,9 @@
                 </section>
 
                 <!-- Languages -->
-                <section class="resume-section">
+                <section class="resume-section reveal-container">
                     <h2 class="resume-section-title">Languages</h2>
-                    <div class="resume-tags">
+                    <div class="resume-tags reveal-child">
                         <span class="resume-tag">Arabic | Native</span>
                         <span class="resume-tag">French | Fluent</span>
                         <span class="resume-tag">English | Fluent</span>
@@ -165,11 +168,11 @@
                 </section>
 
                 <!-- Skills -->
-                <section class="resume-section">
+                <section class="resume-section reveal-container">
                     <h2 class="resume-section-title">Technical Skills</h2>
                     
-                    <h3 class="resume-subsection-title">Languages</h3>
-                    <div class="resume-tags">
+                    <h3 class="resume-subsection-title reveal-child">Languages</h3>
+                    <div class="resume-tags reveal-child">
                         <span class="resume-tag">PHP</span>
                         <span class="resume-tag">Python</span>
                         <span class="resume-tag">JavaScript</span>
@@ -211,6 +214,10 @@
         });
     </script>
     
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
     <!-- Main Script -->
     <script src="script.js"></script>
 </body>

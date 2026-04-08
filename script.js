@@ -25,9 +25,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (navbar) {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                navbar.classList.add('bg-black/80', 'backdrop-blur-md');
+                navbar.classList.add('scrolled');
             } else {
-                navbar.classList.remove('bg-black/80', 'backdrop-blur-md');
+                navbar.classList.remove('scrolled');
             }
         });
     }
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Navigation active link highlighting
     const sections = document.querySelectorAll('section[id]');
-    const navLinkElements = document.querySelectorAll('.nav-link');
+    const navLinkElements = document.querySelectorAll('.nav-links a');
 
     if (sections.length && navLinkElements.length) {
         window.addEventListener('scroll', () => {
@@ -149,9 +149,9 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             navLinkElements.forEach(link => {
-                link.classList.remove('text-blue-400');
+                link.classList.remove('active-link');
                 if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('text-blue-400');
+                    link.classList.add('active-link');
                 }
             });
         });
@@ -183,36 +183,31 @@ document.addEventListener('DOMContentLoaded', function() {
     const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const content = entry.target.querySelector('.section-content');
-                if (content) {
-                    content.classList.add('animate-section-enter');
-                }
+                entry.target.classList.add('visible');
                 
                 // Animate individual cards/elements within sections
-                const cards = entry.target.querySelectorAll('.bg-white\\/5, .group, .flex');
+                const cards = entry.target.querySelectorAll('.project-card, .service-card, .design-card, .project-card-large');
                 cards.forEach((card, index) => {
                     setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0) scale(1)';
+                        card.classList.add('visible');
                     }, index * 150);
                 });
             }
         });
     }, { 
-        threshold: 0.2,
-        rootMargin: '-50px 0px'
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
     });
 
     // Observe all sections
     document.querySelectorAll('section').forEach(section => {
+        section.classList.add('fade-in-section');
         sectionObserver.observe(section);
         
         // Set initial state for cards
-        const cards = section.querySelectorAll('.bg-white\\/5, .group, .flex');
+        const cards = section.querySelectorAll('.project-card, .service-card, .design-card, .project-card-large');
         cards.forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px) scale(0.9)';
-            card.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+            card.classList.add('fade-in-card');
         });
     });
 
@@ -363,7 +358,7 @@ if (printCvBtn) {
 
 // 3D Tilt Effect for Cards (like the reference site)
 function init3DTilt() {
-    const cards = document.querySelectorAll('.project-card, .skill-card, .bg-white\\/5');
+    const cards = document.querySelectorAll('.project-card, .service-card, .design-card, .project-card-large');
     
     cards.forEach(card => {
         card.style.transformStyle = 'preserve-3d';
@@ -377,8 +372,8 @@ function init3DTilt() {
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
             
-            const rotateX = (y - centerY) / 10;
-            const rotateY = (centerX - x) / 10;
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
             
             card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
         });
@@ -797,3 +792,88 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
+
+// --- New Visual Effects ---
+
+// Scroll Progress Bar
+const scrollProgress = document.querySelector('.scroll-progress');
+if (scrollProgress) {
+    window.addEventListener('scroll', () => {
+        const totalScroll = document.documentElement.scrollTop;
+        const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scroll = `${totalScroll / windowHeight * 100}%`;
+        scrollProgress.style.width = scroll;
+    });
+}
+
+// Typing Effect
+const typingText = document.querySelector('.typing-text');
+if (typingText) {
+    const words = ['modern websites', 'creative solutions', 'scalable apps', 'beautiful UIs'];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function type() {
+        const currentWord = words[wordIndex];
+        
+        if (isDeleting) {
+            typingText.textContent = currentWord.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            typingText.textContent = currentWord.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        let typeSpeed = isDeleting ? 50 : 100;
+
+        if (!isDeleting && charIndex === currentWord.length) {
+            typeSpeed = 2000; // Pause at end of word
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            typeSpeed = 500; // Pause before typing next word
+        }
+
+        setTimeout(type, typeSpeed);
+    }
+
+    // Start typing effect
+    setTimeout(type, 1000);
+}
+
+// Custom Cursor
+const cursorDot = document.querySelector('.cursor-dot');
+const cursorOutline = document.querySelector('.cursor-outline');
+
+if (cursorDot && cursorOutline) {
+    window.addEventListener('mousemove', (e) => {
+        const posX = e.clientX;
+        const posY = e.clientY;
+
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
+
+        // Add a slight delay to the outline for a trailing effect
+        cursorOutline.animate({
+            left: `${posX}px`,
+            top: `${posY}px`
+        }, { duration: 500, fill: "forwards" });
+    });
+
+    // Hover effect for interactive elements
+    const interactives = document.querySelectorAll('a, button, .project-card, .service-card, .design-card, .project-card-large');
+    interactives.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursorOutline.style.width = '60px';
+            cursorOutline.style.height = '60px';
+            cursorOutline.style.backgroundColor = 'rgba(59, 130, 246, 0.1)';
+        });
+        el.addEventListener('mouseleave', () => {
+            cursorOutline.style.width = '40px';
+            cursorOutline.style.height = '40px';
+            cursorOutline.style.backgroundColor = 'transparent';
+        });
+    });
+}
