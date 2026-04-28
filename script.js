@@ -1,25 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Loading screen with fallback
-    const loading = document.getElementById('loading');
-    
-    // Ensure loading screen disappears even if something fails
-    const hideLoading = () => {
-        if (loading) {
-            loading.style.opacity = '0';
-            setTimeout(() => {
-                loading.style.display = 'none';
-            }, 500);
-        }
-    };
-
-    // Hide loading after maximum 3 seconds regardless
-    setTimeout(hideLoading, 3000);
-
-    // Check if all critical resources are loaded
-    window.addEventListener('load', () => {
-        setTimeout(hideLoading, 1000);
-    });
-
     // Navbar scroll effect - check if navbar exists
     const navbar = document.getElementById('navbar');
     if (navbar) {
@@ -29,6 +8,15 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 navbar.classList.remove('scrolled');
             }
+        });
+    }
+
+    // Scroll progress bar
+    const scrollProgress = document.querySelector('.scroll-progress');
+    if (scrollProgress) {
+        window.addEventListener('scroll', () => {
+            const total = document.documentElement.scrollHeight - window.innerHeight;
+            scrollProgress.style.width = (window.scrollY / total * 100) + '%';
         });
     }
 
@@ -157,16 +145,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Enhanced hover effects for interactive elements
-    document.querySelectorAll('a, button').forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            el.style.transform = 'translateY(-2px)';
-        });
-        el.addEventListener('mouseleave', () => {
-            el.style.transform = 'translateY(0)';
-        });
-    });
-
     // Parallax effect for floating elements
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
@@ -266,15 +244,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     console.log('Portfolio loaded successfully!');
 });
-
-// Additional safeguard - hide loading if it's still visible after 5 seconds
-setTimeout(() => {
-    const loading = document.getElementById('loading');
-    if (loading && loading.style.display !== 'none') {
-        loading.style.display = 'none';
-        console.warn('Loading screen force-hidden after timeout');
-    }
-}, 5000);
 
 // CV Modal functionality
 const cvModal = document.getElementById('cv-modal');
