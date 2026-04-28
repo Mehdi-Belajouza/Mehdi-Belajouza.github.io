@@ -410,6 +410,11 @@ nav {
     color: #c084fc;
 }
 
+.icon-green {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
 .service-title {
     font-size: 1.5rem;
     font-weight: 700;
