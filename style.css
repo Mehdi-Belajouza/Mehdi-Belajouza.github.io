@@ -231,22 +231,56 @@ nav {
 }
 
 @media (max-width: 768px) {
+    .hero {
+        padding: 5rem 1.5rem 3rem;
+        min-height: 90vh;
+    }
+
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.25rem;
+        margin-bottom: 2rem;
     }
     
     .greeting {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .code-window {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .code-content {
+        padding: 1rem 1.25rem 1.25rem;
+        font-size: 0.75rem;
+        line-height: 1.6;
+    }
+
+    .window-header {
+        padding: 0.625rem 0.875rem;
+    }
+
+    .window-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .window-title {
+        font-size: 0.75rem;
     }
     
     .button-group {
         flex-direction: column;
         width: 100%;
+        gap: 0.75rem;
     }
     
     .btn {
         width: 100%;
         justify-content: center;
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
     }
 }
 
@@ -1478,7 +1512,7 @@ footer {
     
     .project-preview img {
         width: 100% !important;
-        max-width: 400px;
+        max-width: 100%;
         height: auto;
         transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
         border: 3px solid rgba(255, 255, 255, 0.4);
@@ -1490,7 +1524,7 @@ footer {
 
     .project-preview[data-carousel="true"] {
         width: 100% !important;
-        max-width: 400px;
+        max-width: 100%;
         transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
         border: 3px solid rgba(255, 255, 255, 0.4);
     }
@@ -1825,10 +1859,13 @@ footer {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .menu-gallery {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        padding: 1rem;
+    .menu-item {
+        height: 380px;
+    }
+
+    .menu-gallery::before,
+    .menu-gallery::after {
+        width: 60px;
     }
     
     .lightbox-close {
@@ -1886,36 +1923,74 @@ footer {
 
 /* ─── Responsive ─── */
 @media (max-width: 1200px) {
-    .menu-gallery {
-        --card-width: 340px;
-        --card-height: 460px;
-        --gap: 70px;
-        --base-angle-y: -24deg;
+    .menu-item {
+        height: 420px;
     }
 }
 
 @media (max-width: 800px) {
-    .menu-gallery {
-        --card-width: 86vw;
-        --card-height: calc(86vw * 1.37);
-        --gap: 50px;
-        --base-angle-y: -18deg;
-        --base-angle-x: 8deg;
-        justify-content: flex-start;
-        padding: 4rem 1.5rem;
-    }
-
-    .menu-item::after {
-        left: -28px;
-        width: 28px;
+    .menu-track {
+        animation: scrollMarquee 28s linear infinite;
     }
 
     .menu-item {
-        transform: rotateY(var(--base-angle-y)) rotateX(var(--base-angle-x)) translateZ(0);
+        height: 340px;
     }
 
-    .menu-item:hover {
-        transform: rotateY(0deg) rotateX(0deg) translateZ(90px) scale(1.07) !important;
+    .menu-overlay {
+        padding: 1rem 0.875rem 0.875rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.875rem;
+        line-height: 1.2;
+    }
+
+    .greeting {
+        font-size: 1.125rem;
+    }
+
+    .code-content {
+        font-size: 0.7rem;
+        padding: 0.875rem 1rem 1rem;
+    }
+
+    .project-title-large {
+        font-size: 1.625rem;
+    }
+
+    .project-card-large {
+        padding: 1.5rem 1.25rem;
+        border-radius: 1.5rem;
+    }
+
+    .project-badge-large {
+        font-size: 0.625rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .menu-item {
+        height: 300px;
+    }
+
+    .video-section::before,
+    .video-section::after {
+        width: 0;
+    }
+
+    .video-showcase {
+        max-width: 100%;
+        border-radius: 1rem;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .about-text {
+        font-size: 1rem;
     }
 }
 
