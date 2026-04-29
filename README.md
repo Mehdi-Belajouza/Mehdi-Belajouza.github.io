@@ -2,7 +2,7 @@
 
 A modern, responsive portfolio website showcasing my work as a Full-Stack Developer.
 
-## 🌟 Features
+## Features
 
 - **Responsive Design**: Fully responsive across all devices and screen sizes
 - **Modern UI**: Clean, professional design with smooth animations
@@ -14,14 +14,14 @@ A modern, responsive portfolio website showcasing my work as a Full-Stack Develo
 - **Professional Resume**: Comprehensive CV with download functionality
 - **Contact Section**: Easy ways to get in touch
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - **Frontend**: HTML5, CSS3, JavaScript (Vanilla)
 - **Icons**: Font Awesome 6.4.0
 - **Design**: Custom CSS with modern gradients and animations
 - **Responsive**: CSS Grid & Flexbox
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 Portfolio/
@@ -35,7 +35,7 @@ Portfolio/
 └── [project-images]    # Various project screenshots and designs
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 1. Clone the repository:
 ```bash
@@ -51,26 +51,26 @@ start index.html # Windows
 
 3. That's it! No build process required.
 
-## 📱 Pages
+## Pages
 
 - **Home** (`index.html`): Landing page with hero section, about, design showcase, and contact
 - **Projects** (`projects.html`): Detailed project showcase with live demos and source links
 - **Resume** (`resume.html`): Professional CV with work experience, education, and skills
 
-## 🎨 Key Highlights
+## Key Highlights
 
 - **Menu Design Gallery**: Interactive lightbox with keyboard navigation
 - **Project Cards**: Color-coded with unique gradients for each project
 - **Smooth Animations**: Fade-in and scroll reveal effects
 - **Professional Typography**: Clean, readable fonts with proper hierarchy
 
-## 📧 Contact
+## Contact
 
 - **Email**: belajouza@et.esiea.fr
 - **LinkedIn**: [Mehdi Belajouza](https://linkedin.com/in/mehdi-belajouza)
 - **GitHub**: [Profile](https://github.com/YOUR_USERNAME)
 
-## 📄 License
+## License
 
 © 2026 Mehdi Belajouza. All rights reserved.
 

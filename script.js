@@ -327,7 +327,7 @@ if (printCvBtn) {
 
 // 3D Tilt Effect for Cards (like the reference site)
 function init3DTilt() {
-    const cards = document.querySelectorAll('.project-card, .service-card, .design-card, .project-card-large');
+    const cards = document.querySelectorAll('.project-card, .service-card, .design-card');
     
     cards.forEach(card => {
         card.style.transformStyle = 'preserve-3d';
@@ -369,6 +369,28 @@ function initMagneticButtons() {
         btn.addEventListener('mouseleave', () => {
             btn.style.transform = 'translate(0, 0)';
         });
+    });
+}
+
+// Smooth scroll reveal for section headings and body text
+function initScrollReveal() {
+    const targets = document.querySelectorAll('.section-title, .about-text, .back-link');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    targets.forEach(el => {
+        if (el.closest('.reveal-container')) return;
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(24px)';
+        el.style.transition = 'opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        observer.observe(el);
     });
 }
 
@@ -566,6 +588,51 @@ function initGlitchEffect() {
     });
 }
 
+function initProjectCarousels() {
+    const carousels = document.querySelectorAll('[data-carousel="true"]');
+    carousels.forEach(carousel => {
+        const track = carousel.querySelector('.carousel-track');
+        const dots = carousel.querySelectorAll('.dot');
+        const imgs = track ? track.querySelectorAll('img') : [];
+        if (!track || imgs.length < 2) return;
+
+        let current = 0;
+        let timer;
+
+        function goTo(idx) {
+            current = (idx + imgs.length) % imgs.length;
+            track.style.transform = `translateX(-${current * 100}%)`;
+            dots.forEach((d, i) => d.classList.toggle('active', i === current));
+        }
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                goTo(i);
+                resetTimer();
+            });
+        });
+
+        function startTimer() {
+            timer = setInterval(() => goTo(current + 1), 3500);
+        }
+
+        function resetTimer() {
+            clearInterval(timer);
+            startTimer();
+        }
+
+        const card = carousel.closest('.project-card-large');
+        if (card) {
+            card.addEventListener('mouseenter', () => clearInterval(timer));
+            card.addEventListener('mouseleave', startTimer);
+        }
+
+        startTimer();
+    });
+}
+
 // Initialize all effects when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     // Small delay to ensure everything is loaded
@@ -573,9 +640,11 @@ document.addEventListener('DOMContentLoaded', () => {
         init3DTilt();
         initMagneticButtons();
         initStaggeredReveal();
+        initScrollReveal();
         initParallaxDepth();
         initSectionColors();
         initGlitchEffect();
+        initProjectCarousels();
         
         // Optional: Enable cursor trail (can be heavy on performance)
         // initCursorTrail();
@@ -684,19 +753,26 @@ const lightboxCaption = document.querySelector('.lightbox-caption');
 const lightboxClose = document.querySelector('.lightbox-close');
 const lightboxPrev = document.querySelector('.lightbox-prev');
 const lightboxNext = document.querySelector('.lightbox-next');
-const menuItems = document.querySelectorAll('.menu-item');
+
+// Only non-duplicated items build the images index
+const originalMenuItems = document.querySelectorAll('.menu-item:not([aria-hidden])');
+const allMenuItems = document.querySelectorAll('.menu-item');
 
 let currentImageIndex = 0;
-const images = Array.from(menuItems).map(item => ({
+const images = Array.from(originalMenuItems).map(item => ({
     src: item.querySelector('img').src,
     title: item.getAttribute('data-title')
 }));
 
-// Open lightbox
-menuItems.forEach((item, index) => {
+// Click works on both originals and duplicates
+allMenuItems.forEach((item) => {
     item.addEventListener('click', () => {
-        currentImageIndex = index;
-        showLightbox();
+        const itemSrc = item.querySelector('img').src;
+        const idx = images.findIndex(img => img.src === itemSrc);
+        if (idx !== -1) {
+            currentImageIndex = idx;
+            showLightbox();
+        }
     });
 });
 

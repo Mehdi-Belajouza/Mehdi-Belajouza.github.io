@@ -72,7 +72,7 @@
                         </div>
                         <div class="project-buttons">
                             <button class="btn-project btn-private">
-                                <i class="fab fa-github"></i> Private 🔒
+                                <i class="fab fa-github"></i> Private
                             </button>
                             <button class="btn-project btn-live">
                                 <i class="fas fa-external-link-alt"></i> Live Site →
@@ -81,6 +81,45 @@
                     </div>
                     <div class="project-preview">
                         <img src="images/iVB.png" alt="IVB Preview">
+                    </div>
+                </a>
+                <!-- Project 5: Tunisian Swimming Records Website -->
+                <a href="" target="_blank" class="project-card-large reveal-child" style="--bg-image: url('images/tunisian_swimming_records.png');">
+                    <div class="project-content-left">
+                        <span class="project-badge-large">WORK IN PROGRESS</span>
+                        <span class="project-category-large">Personal Project</span>
+                        <h3 class="project-title-large">Tunisian Swimming Records Website</h3>
+                        <p class="project-description-large">
+                            Website dedicated to showcasing the Tunisian swimming records, providing an organized and visually appealing platform for swimming enthusiasts to explore and stay updated on the latest records and achievements in Tunisian swimming.
+                            Data is collected from Wikipedia open-sourced datasets .
+                        </p>
+                        <div class="project-tech-stack">
+                            <i class="fab fa-laravel"></i>
+                            <i class="fab fa-php"></i>
+                            <i class="fab fa-js"></i>
+                            <i class="fas fa-database"></i>
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="project-buttons">
+                            <button class="btn-project btn-private">
+                                <i class="fab fa-github"></i> Private
+                            </button>
+                            <button class="btn-project btn-live">
+                                <i class="fas fa-external-link-alt"></i> Live Site →
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-preview" data-carousel="true">
+                        <div class="carousel-track">
+                            <img src="images/Swimming.png" alt="Tunisian Swimming Records Website Preview">
+                            <img src="images/Swimming1.png" alt="Tunisian Swimming Records Website Preview">
+                            <img src="images/Swimming2.png" alt="Tunisian Swimming Records Website Preview">
+                        </div>
+                        <div class="carousel-dots">
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
                     </div>
                 </a>
                 
@@ -203,7 +242,7 @@
                         </div>
                         <div class="project-buttons">
                             <button class="btn-project btn-private">
-                                <i class="fab fa-github"></i> Private 🔒
+                                <i class="fab fa-github"></i> Private
                             </button>
                         </div>
                     </div>
@@ -229,7 +268,7 @@
                         </div>
                         <div class="project-buttons">
                             <button class="btn-project btn-private">
-                                <i class="fab fa-github"></i> Private 🔒
+                                <i class="fab fa-github"></i> Private
                             </button>
                         </div>
                     </div>
@@ -267,57 +306,96 @@
     </section>
 
     <!-- AI Video Showcase -->
-    <section class="design-section" style="padding-top: 0;">
-        <div class="design-container">
+    <section class="design-section video-section" style="padding-top: 0;">
+        <div class="design-container" style="text-align: center;">
             <h2 class="section-title">AI Commercial</h2>
             <p class="about-text">A product display animation generated with Google Veo — prompt-crafted and scene-directed.</p>
-            <div class="video-showcase">
-                <video controls muted loop playsinline poster="images/placeholder-image.png">
-                    <source src="videos/Veo advertisement video.mp4" type="video/mp4">
-                </video>
+            <div class="video-wrapper">
+                <div class="video-showcase">
+                    <video controls muted loop playsinline poster="images/placeholder-image.png" onloadedmetadata="this.currentTime=0.1">
+                        <source src="videos/Veo advertisement video.mp4" type="video/mp4">
+                    </video>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Menu Designs Gallery Section -->
     <section id="menu-designs" class="design-section" style="margin-top: 60px;">
-        <div class="design-container">
+        <div class="design-container" style="text-align: center;">
             <h2 class="section-title">Menu Design Gallery</h2>
             <p class="about-text">
                 Professional menu designs for restaurant brands featuring modern layouts and appetizing visuals.
             </p>
             
             <div class="menu-gallery">
-                <div class="menu-item" data-title="Pizza Menu Design">
-                    <img src="images/Pizza.png" alt="Pizza Menu Design">
-                    <div class="menu-overlay">
-                        <span class="view-icon">👁️</span>
-                        <span class="menu-title">Pizza Menu</span>
+                <div class="menu-track">
+                    <!-- Original items -->
+                    <div class="menu-item" data-title="Pizza Menu Design">
+                        <img src="images/Pizza.png" alt="Pizza Menu Design">
+                        <div class="menu-overlay">
+                            <i class="fas fa-expand-alt"></i>
+                            <span class="menu-title">Pizza Menu</span>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="menu-item" data-title="Burger Menu Design">
-                    <img src="./images/Burger.png" alt="Burger Menu Design">
-                    <div class="menu-overlay">
-                        <span class="view-icon">👁️</span>
-                        <span class="menu-title">Burger Menu</span>
+                    <div class="menu-item" data-title="Burger Menu Design">
+                        <img src="./images/Burger.png" alt="Burger Menu Design">
+                        <div class="menu-overlay">
+                            <i class="fas fa-expand-alt"></i>
+                            <span class="menu-title">Burger Menu</span>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="menu-item" data-title="Bowl Menu Design">
-                    <img src="./images/Bowl.png" alt="Bowl Menu Design">
-                    <div class="menu-overlay">
-                        <span class="view-icon">👁️</span>
-                        <span class="menu-title">Bowl Menu</span>
+                    <div class="menu-item" data-title="Bowl Menu Design">
+                        <img src="./images/Bowl.png" alt="Bowl Menu Design">
+                        <div class="menu-overlay">
+                            <i class="fas fa-expand-alt"></i>
+                            <span class="menu-title">Bowl Menu</span>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="menu-item" data-title="Sandwiches Menu Design">
-                    <img src="./images/Sandwiches.png" alt="Sandwiches Menu Design">
-                    <div class="menu-overlay">
-                        <span class="view-icon">👁️</span>
-                        <span class="menu-title">Sandwiches Menu</span>
+                    <div class="menu-item" data-title="Sandwiches Menu Design">
+                        <img src="./images/Sandwiches.png" alt="Sandwiches Menu Design">
+                        <div class="menu-overlay">
+                            <i class="fas fa-expand-alt"></i>
+                            <span class="menu-title">Sandwiches Menu</span>
+                        </div>
                     </div>
+                    <div class="menu-item" data-title="Pizza Menu Design">
+                        <img src="./images/pizza.png" alt="Pizza Menu Design">
+                        <div class="menu-overlay">
+                            <i class="fas fa-expand-alt"></i>
+                            <span class="menu-title">Pizza Menu</span>
+                        </div>
+                    </div>
+                    <!-- Duplicated set for seamless loop -->
+                    <div class="menu-item" aria-hidden="true" data-title="Pizza Menu Design">
+                        <img src="images/Pizza.png" alt="">
+                        <div class="menu-overlay">
+                            <i class="fas fa-expand-alt"></i>
+                            <span class="menu-title">Pizza Menu</span>
+                        </div>
+                    </div>
+                    <div class="menu-item" aria-hidden="true" data-title="Burger Menu Design">
+                        <img src="./images/Burger.png" alt="">
+                        <div class="menu-overlay">
+                            <i class="fas fa-expand-alt"></i>
+                            <span class="menu-title">Burger Menu</span>
+                        </div>
+                    </div>
+                    <div class="menu-item" aria-hidden="true" data-title="Bowl Menu Design">
+                        <img src="./images/Bowl.png" alt="">
+                        <div class="menu-overlay">
+                            <i class="fas fa-expand-alt"></i>
+                            <span class="menu-title">Bowl Menu</span>
+                        </div>
+                    </div>
+                    <div class="menu-item" aria-hidden="true" data-title="Sandwiches Menu Design">
+                        <img src="./images/Sandwiches.png" alt="">
+                        <div class="menu-overlay">
+                            <i class="fas fa-expand-alt"></i>
+                            <span class="menu-title">Sandwiches Menu</span>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
